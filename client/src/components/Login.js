@@ -27,7 +27,6 @@ function Login({setTeacher}) {
         resp.json().then((user) =>{
           setTeacher(user)
           history.push("/dashboard")
-          console.log(user)
         });
       } else {
         resp.json().then((data) => 
@@ -35,6 +34,8 @@ function Login({setTeacher}) {
       }
     });
   };
+
+
 
   return (
     <>
@@ -68,7 +69,7 @@ function Login({setTeacher}) {
           </div>
         </form>
 
-      <div className="error-wrapper">{errors.length > 0 && errors.map((error)=> <p>{error}</p>)}</div> 
+      <div className="error-wrapper">{errors.length > 0 && errors.map((error)=> <p key={error}>{error}</p>)}</div> 
       </>
   );
 }

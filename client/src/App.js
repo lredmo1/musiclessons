@@ -22,13 +22,13 @@ function App() {
   return (
     <div className="App">
        <BrowserRouter>
-      <Navbar/>
+      <Navbar teacher={teacher} setTeacher={setTeacher}/>
         <Switch>
         <Route exact path="/">
             <Home />
           </Route>
           <Route exact path="/signup">
-            <TeacherSignUp />
+            <TeacherSignUp setTeacher={setTeacher}/>
           </Route>
           <Route exact path="/login">
             <Login setTeacher={setTeacher} teacher={teacher}/>
