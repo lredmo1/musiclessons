@@ -1,17 +1,20 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-function TeacherSignUp() {
+function TeacherSignUp({setTeacher}) {
   const [userFullName, setUserFullName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  // const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  let history = useHistory();
 
   function handleSubmit(e) {
     e.preventDefault();
-    // setIsLoading(true);
+    setIsLoading(true);
     fetch("/signup", {
       method: "POST",
       headers: {
@@ -24,15 +27,15 @@ function TeacherSignUp() {
         password,
         password_confirmation: passwordConfirmation,
       }),
-    })
-      .then((resp) => resp.json())
-      .then((data) => console.log(data));
-    // setIsLoading(false);
-    // if (resp.ok) {
-    //   resp.json().then((user) => onLogin(user));
-    // } else {
-    //   resp.json().then((data) => setErrors(data.errors));
-    // }
+    }).then((resp) => {
+      setIsLoading(false);
+      if (resp.ok) {
+        resp.json().then((user) => setTeacher(null));
+        history.push("/login")
+      } else {
+        resp.json().then((data) => setErrors(data.errors));
+      }
+    });
   }
 
   return (
@@ -99,13 +102,12 @@ function TeacherSignUp() {
           </label>
         </div>
         <div className="button-submit">
-          <button type="submit"> Sign Up </button>
           <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
         </div>
       </form>
-      {/* <div className="error-wrapper">
-        {errors.length > 0 && errors.map((error) => <p>{error}</p>)}
-      </div> */}
+      <div className="error-wrapper">
+        {errors.length > 0 && errors.map((error) => <p key={error}>{error}</p>)}
+      </div>
     </>
   );
 }

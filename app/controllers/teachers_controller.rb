@@ -1,20 +1,16 @@
 class TeachersController < ApplicationController
-# rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    # rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response  
+    skip_before_action :authorize, only: [:create, :index]
+
 
     def index
         teachers = Teacher.all
         render json: teachers, status: :ok
     end
     
-   
-    # def show
-    #     teacher = Teacher.find(params[:id])
-    #     render json: teacher, status: :ok
-    # end
-
-    # def show
-    #     render json: @current_user
-    # end
+    def show
+        render json: @current_teacher
+    end
 
     def create
         teacher = Teacher.create!(teacher_params)

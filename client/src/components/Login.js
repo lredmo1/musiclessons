@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-function Login() {
+function Login({setTeacher}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  // let history = useHistory();
+  let history = useHistory();
 
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     fetch("/login", {
       method: "POST",
       headers: {
@@ -24,19 +25,20 @@ function Login() {
     }).then((resp) => {
       if (resp.ok) {
         resp.json().then((user) =>{
-          console.log(user)
-          // onLogin(user)
-          // history.push("/dashboard")
+          setTeacher(user)
+          history.push("/dashboard")
         });
       } else {
         resp.json().then((data) => 
-        console.log("no"))
-        // setErrors(data.errors));
+        setErrors(data.errors));
       }
     });
   };
 
+
+
   return (
+    <>
         <form onSubmit={handleSubmit}>
           <div className="input">
             <label>
@@ -67,8 +69,8 @@ function Login() {
           </div>
         </form>
 
-      // <div className="error-wrapper">{errors.length > 0 && errors.map((error)=> <p>{error}</p>)}</div> 
- 
+      <div className="error-wrapper">{errors.length > 0 && errors.map((error)=> <p key={error}>{error}</p>)}</div> 
+      </>
   );
 }
 

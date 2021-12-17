@@ -1,5 +1,10 @@
+import TeacherDashboard from '../components/TeacherDashboard';
+
 function DashboardContainer() {
-    return <></>;
+    return <>
+    <h1>Welcome to Dashboard</h1>
+    <TeacherDashboard />
+    </>;
   }
   
   export default DashboardContainer;
