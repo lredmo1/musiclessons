@@ -1,56 +1,72 @@
 import { SheetMusic } from "./SheetMusic";
 import MusicToolBar from "./MusicToolBar";
-import { useState, useEffect } from "react";
-import AudioPlayer from "./Keyboard/AudioPlayer";
+import { useRef, useState} from "react";
 import Piano from "./Piano";
 
-
 function TeacherDashboard() {
-  const audioPlayer = AudioPlayer();
+// FIRST VERSION (pass staves as staves)
+  // const [staves, setStaves] = useState([]);
+  // let musicNotes = [];
+  // let musicNotesArray = []
 
-  useEffect(() => {
-    audioPlayer.setInstrument("acoustic_grand_piano");
-  }, []);
+  // function handleKeyPress(e) {
+  //   musicNotes.push(`${e.key}4`)
+  //   musicNotesArray.push(musicNotes)
+  //   setStaves((currentstate) => [...currentstate, musicNotesArray]);
+  //   console.log(`this is staves ${musicNotesArray}`);
+  //   console.log(`this is staves ${staves}`)
+  // }
 
-  const handleClick = () => {
-    audioPlayer.playNote("C4");
-  };
 
-  const [staves, setStaves] = useState([]
+//SECOND VERSION (pass staves as musicNotesArray)
+  // let musicNotes = [];
+  //   const musicNotesArray = []
+  //   const staves = useRef([])
 
-  //   ["c4", "d4", "e4", "d4"],
-  //   ["a4", "d4", "e4", "d4"],
-  //   ["g3", "d4", "e4", "d4"],
-  //   ["a4", "d4", ["e4", 2]],
-  // ]
-  );
+  // function handleKeyPress(e) {
+  //   musicNotes.push(`${e.key}4`)
+  //   console.log(musicNotes);
+  //   musicNotesArray.push(musicNotes)
+  //   console.log(musicNotesArray);
+  //   return musicNotesArray
+  // }
 
-  // ["c4", "d4", "e4", "d4"],
-  //   ["a4", "d4", "e4", "d4"],
-  //   ["g3", "d4", "e4", "d4"],
-  //   ["a4", "d4", ["e4", 2]];
+//THIRD VERSION (pass staves as staves)
+  // const musicNotes = useRef([])
+  // const musicNotesArray = []
 
+  // function handleKeyPress(e) {
+  //   musicNotes.current=[`${e.key}4`];
+  //   console.log(musicNotes);
+  //   musicNotesArray.push(musicNotes.current)
+  //   console.log(musicNotesArray);
+  //   setStaves((currentstate) => [...currentstate, musicNotesArray]);
+  //   console.log(`this is staves ${staves}`)
+  // }
+
+  // THIS WORKS WHEN EDIT CODE AND PAGE RERENDERS
+  const staves = useRef([])
   let musicNotes = [];
+  let musicNotesArray = []
 
   function handleKeyPress(e) {
-    musicNotes.push(`${e.key}4`);
-    console.log(musicNotes);
-    setStaves((currentstate) => [...currentstate, musicNotes]);
+    musicNotes.push(`${e.key}4`)
+    musicNotesArray.push(musicNotes)
+    staves.current = musicNotesArray;
+    console.log(`this is musicNotesArray ${musicNotesArray}`);
+    console.log(staves)
   }
 
   return (
     <>
-      <SheetMusic staves={staves} />
+      <SheetMusic staves={staves.current} />
       <form onKeyPress={handleKeyPress}>
         <input type="text" />
       </form>
       <MusicToolBar />
       <div className="app-container">
-        <button onClick={handleClick}>Play</button>
+        <Piano />
       </div>
-      <div className="app-container">
-      <Piano />
-    </div>
     </>
   );
 }
