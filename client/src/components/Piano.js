@@ -59,8 +59,8 @@ const Piano = () => {
     <div className="piano-container">
       <Instrument
         instrumentName={"acoustic_grand_piano"}
-        startNote={"C3"}
-        endNote={"B5"}
+        startNote={"F3"}
+        endNote={"E5"}
         renderPianoKey={renderPianoKey}
         keyboardMap={{
           // Q: "C3",
@@ -87,7 +87,7 @@ const Piano = () => {
           A: "A4",
           // F: "A#4",
           B: "B4",
-          // B: "C5",
+          M: "C5",
           // H: "C#5",
           // N: "D5",
           // J: "D#5",

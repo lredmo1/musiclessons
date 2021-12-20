@@ -15,7 +15,11 @@ function TeacherDashboard() {
       musicNotesArray[musicNotesArray.length - 1] &&
       musicNotesArray[musicNotesArray.length - 1].length < 4
     ) {
-      musicNotesArray[musicNotesArray.length - 1].push(`${e.key}3`);
+      if (e.key === "m") {
+        musicNotesArray[musicNotesArray.length - 1].push("c5")
+      } else {
+        musicNotesArray[musicNotesArray.length - 1].push(`${e.key}4`)
+      }
       setStaves(musicNotesArray);
       console.log(e.key)
 

@@ -75,8 +75,8 @@
 }
 
 .piano-natural-key-playing {
-  border-bottom: 10px solid blue;
-  color: blue;
+  border-bottom: 10px solid rgb(201, 201, 250);
+  color: rgb(201, 201, 250);
 }
 
 .piano-accidental-key-wrapper {
