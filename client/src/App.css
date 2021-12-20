@@ -52,7 +52,7 @@
 
 .piano-container {
   display: inline-flex;
-  border-top: 10px solid blue;
+  border-top: 10px solid rgb(201, 201, 250);
 }
 
 .piano-natural-key {

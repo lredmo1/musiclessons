@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
 
-function Login({setTeacher}) {
+function Login({ setTeacher }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   let history = useHistory();
-
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,21 +23,19 @@ function Login({setTeacher}) {
       }),
     }).then((resp) => {
       if (resp.ok) {
-        resp.json().then((user) =>{
-          setTeacher(user)
-          history.push("/dashboard")
+        resp.json().then((user) => {
+          setTeacher(user);
+          history.push("/dashboard");
         });
       } else {
-        resp.json().then((data) => 
-        setErrors(data.errors));
+        resp.json().then((data) => setErrors(data.errors));
       }
     });
   };
 
-
-
   return (
     <>
+      <FormStyle>
         <form onSubmit={handleSubmit}>
           <div className="input">
             <label>
@@ -69,9 +66,26 @@ function Login({setTeacher}) {
           </div>
         </form>
 
-      <div className="error-wrapper">{errors.length > 0 && errors.map((error)=> <p key={error}>{error}</p>)}</div> 
-      </>
+        <div className="error-wrapper">
+          {errors.length > 0 &&
+            errors.map((error) => <p key={error}>{error}</p>)}
+        </div>
+      </FormStyle>
+    </>
   );
 }
 
 export default Login;
+
+const FormStyle = styled.div`
+  display: grid;
+  grid-template-rows: repeat(3, 100px);
+  grid-template-columns: 100px;
+  justify-content: center;
+  button {
+    margin-top: 15px;
+  }
+  div {
+    margin-top: 15px;
+  }
+`;
