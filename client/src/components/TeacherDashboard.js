@@ -10,13 +10,15 @@ function TeacherDashboard() {
 
   function handleKeyPress(e) {
     let musicNotesArray = [...staves];
-    console.log(musicNotesArray[musicNotesArray.length - 1]);
+    // console.log(musicNotesArray[musicNotesArray.length - 1]);
     if (
       musicNotesArray[musicNotesArray.length - 1] &&
       musicNotesArray[musicNotesArray.length - 1].length < 4
     ) {
-      musicNotesArray[musicNotesArray.length - 1].push(`${e.key}4`);
+      musicNotesArray[musicNotesArray.length - 1].push(`${e.key}3`);
       setStaves(musicNotesArray);
+      console.log(e.key)
+
     } else {
       let musicNotes = [];
       musicNotes.push(`${e.key}4`);

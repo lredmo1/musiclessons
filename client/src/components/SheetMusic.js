@@ -16,7 +16,6 @@ export function SheetMusic({
 }) {
   const container = useRef()
   const rendererRef = useRef()
-console.log(staves)
   useEffect(() => {
 
 
@@ -76,6 +75,5 @@ console.log(staves)
       })
     })
   }, [staves])
-console.log(container.current)
   return <div ref={container} />
 }
