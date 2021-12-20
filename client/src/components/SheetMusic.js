@@ -16,15 +16,21 @@ export function SheetMusic({
 }) {
   const container = useRef()
   const rendererRef = useRef()
-
+console.log(staves)
   useEffect(() => {
-    if (rendererRef.current == null) {
+
+
+    if (container.current.children.length > 0) {  
+    container.current.removeChild(container.current.children[0])}
+
+
       rendererRef.current = new Renderer(
         container.current,
         Renderer.Backends.SVG
       )
-    }
-    const renderer = rendererRef.current
+
+    const renderer = rendererRef.current  
+ 
     renderer.resize(width, height)
     const context = renderer.getContext()
     context.setFont('Arial', 10, '').setBackgroundFillStyle('#eed')
@@ -40,6 +46,7 @@ export function SheetMusic({
       currX += stave.getWidth()
       stave.setContext(context).draw()
 
+
       const processedNotes = notes
         .map(note => (typeof note === 'string' ? { key: note } : note))
         .map(note =>
@@ -54,17 +61,21 @@ export function SheetMusic({
             : rest
         )
         .map(
-          ({ key, keys, duration = 'q' }) =>
-            new StaveNote({
+          ({ key, keys, duration = 'q' }) =>{
+
+            return new StaveNote({
               keys: key ? [key] : keys,
               duration: String(duration),
             })
+          }
+            
         )
+
       Formatter.FormatAndDraw(context, stave, processedNotes, {
         auto_beam: true,
       })
     })
   }, [staves])
-
+console.log(container.current)
   return <div ref={container} />
 }
