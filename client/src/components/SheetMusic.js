@@ -11,7 +11,7 @@ export function SheetMusic({
   staves,
   clef = 'treble',
   timeSignature = '4/4',
-  width = 450,
+  width = 950,
   height = 150,
 }) {
   const container = useRef()
@@ -36,8 +36,10 @@ export function SheetMusic({
     const staveWidth = (width - clefAndTimeWidth) / staves.length
 
     let currX = 0
+    
     staves.forEach((notes, i) => {
       const stave = new Stave(currX, 0, staveWidth)
+
       if (i === 0) {
         stave.setWidth(staveWidth + clefAndTimeWidth)
         stave.addClef(clef).addTimeSignature(timeSignature)
