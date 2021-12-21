@@ -11,12 +11,11 @@ export function SheetMusic({
   staves,
   clef = 'treble',
   timeSignature = '4/4',
-  width = 450,
+  width = 950,
   height = 150,
 }) {
   const container = useRef()
   const rendererRef = useRef()
-console.log(staves)
   useEffect(() => {
 
 
@@ -37,8 +36,10 @@ console.log(staves)
     const staveWidth = (width - clefAndTimeWidth) / staves.length
 
     let currX = 0
+    
     staves.forEach((notes, i) => {
       const stave = new Stave(currX, 0, staveWidth)
+
       if (i === 0) {
         stave.setWidth(staveWidth + clefAndTimeWidth)
         stave.addClef(clef).addTimeSignature(timeSignature)
@@ -76,6 +77,5 @@ console.log(staves)
       })
     })
   }, [staves])
-console.log(container.current)
   return <div ref={container} />
 }
