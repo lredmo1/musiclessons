@@ -1,6 +1,6 @@
 import { SheetMusic } from "./SheetMusic";
 import MusicToolBar from "./MusicToolBar";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Piano from "./Piano";
 import styled from "styled-components";
 

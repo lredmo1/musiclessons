@@ -1,43 +1,46 @@
-puts "🌱 Seeding music..."
+puts "🌱 Seeding musiclessons..."
 puts "Deleteing previous data..."
-Song.destroy_all
-Student.destroy_all
-Teacher.destroy_all
-
-puts "Creating teachers..."
-Teacher.create(
-    name: Faker::Name.name, 
-    email: Faker::Internet.email, 
-    username: Faker::Internet.username, 
-    password: "password"
-)
-Teacher.create(
-    name: Faker::Name.name, 
-    email: Faker::Internet.email, 
-    username: Faker::Internet.username, 
-    password: "password"
-)
+# Song.destroy_all
+Classroom.destroy_all
+User.destroy_all
 
 
-puts "Creating students..."
+
 20.times do 
-Student.create(
+puts "Creating  users..."
+User.create(
     name: Faker::Name.name, 
-    student_id: Faker::Number.number(digits: 6), 
+    email: Faker::Internet.email, 
     username: Faker::Internet.username, 
     password: "password",
-    teacher_id: Teacher.all.sample.id
 )
 end
-    
 
-puts "Creating songs..."
-40.times do 
-    Song.create(
-        name: Faker::Name.name, 
-        data: "info", 
-        student_id: Student.all.sample.id  
+
+
+puts "Creating classrooms..."
+10.times do 
+    Classroom.create(
+        teacher_id: User.create(
+            name: Faker::Name.name, 
+            email: Faker::Internet.email, 
+            username: Faker::Internet.username, 
+            password: "password").id,
+        student_id: User.all.sample.id  
     )
 end
+
+10.times do 
+    Classroom.create(
+        teacher_id: User.create(
+            name: Faker::Name.name, 
+            email: Faker::Internet.email, 
+            username: Faker::Internet.username, 
+            password: "password").id,
+        student_id: User.all.sample.id  
+    )
+end
+
+# Songs?
 
 puts "✅ Done seeding!"
