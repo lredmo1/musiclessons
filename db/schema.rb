@@ -15,27 +15,25 @@ ActiveRecord::Schema.define(version: 2021_12_15_234946) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "songs", force: :cascade do |t|
-    t.string "name"
-    t.string "data"
+  create_table "classrooms", force: :cascade do |t|
+    t.bigint "teacher_id", null: false
     t.bigint "student_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["student_id"], name: "index_songs_on_student_id"
+    t.index ["student_id"], name: "index_classrooms_on_student_id"
+    t.index ["teacher_id"], name: "index_classrooms_on_teacher_id"
   end
 
-  create_table "students", force: :cascade do |t|
+  create_table "songs", force: :cascade do |t|
     t.string "name"
-    t.integer "student_id"
-    t.string "username"
-    t.string "password_digest"
-    t.bigint "teacher_id", null: false
+    t.string "data"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["teacher_id"], name: "index_students_on_teacher_id"
+    t.index ["user_id"], name: "index_songs_on_user_id"
   end
 
-  create_table "teachers", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "username"
@@ -44,6 +42,7 @@ ActiveRecord::Schema.define(version: 2021_12_15_234946) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "songs", "students"
-  add_foreign_key "students", "teachers"
+  add_foreign_key "classrooms", "users", column: "student_id"
+  add_foreign_key "classrooms", "users", column: "teacher_id"
+  add_foreign_key "songs", "users"
 end

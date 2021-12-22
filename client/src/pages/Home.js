@@ -2,10 +2,8 @@ import styled from 'styled-components';
 
 function Home() {
 
-    return (<TitleStyle>
-    <h1>Home</h1>
-    
-    </TitleStyle>);
+    return (
+    <TitleStyle>Home</TitleStyle>);
   }
   
   export default Home;

@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  is_teacher: false
+  teacher: one
+  student: one
+
+two:
+  is_teacher: false
+  teacher: two
+  student: two
