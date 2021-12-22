@@ -49,7 +49,7 @@ function MusicContainer() {
         <input type="text" placeholder=" Click to begin" />
       </form>
       <MusicToolBar />
-      <Piano />;
+      <Piano />
     </>
   );
 }

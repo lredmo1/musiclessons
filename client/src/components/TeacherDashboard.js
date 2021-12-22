@@ -1,17 +1,34 @@
 import MusicContainer from "./MusicContainer";
+import StudentInfoContainer from "./StudentInfoContainer";
+import StudentSignUp from "./StudentSignUp";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
-function TeacherDashboard() {
- 
+function TeacherDashboard({ user }) {
+  const [signup, setSignup] = useState(false);
+
+  function handleAddStudent() {
+    setSignup(true);
+  }
+
+  function handleCancelAddStudent() {
+    setSignup(false);
+  }
+
   return (
     <DashboardStyle>
+      <div>Make Music</div>
       <MusicContainer />
-      {/* <SheetMusic staves={staves} />
-      <form onKeyUp={handleKeyPress}>
-        <input type="text" placeholder=" Click to begin"/>
-      </form>
-      <MusicToolBar />
-      <Piano /> */}
+      <button onClick={handleAddStudent}>Manage Students</button>
+      <StudentInfoContainer user={user} />
+      {signup ? (
+        <div>
+          <button onClick={handleCancelAddStudent}>Cancel</button>
+          <StudentSignUp setSignup={setSignup} user={user}/>
+        </div>
+      ) : (
+        <button onClick={handleAddStudent}>Add New Student</button>
+      )}
     </DashboardStyle>
   );
 }

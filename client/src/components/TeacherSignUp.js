@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
-function TeacherSignUp({ setTeacher }) {
+function TeacherSignUp({ setUser }) {
   const [userFullName, setUserFullName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -31,7 +31,7 @@ function TeacherSignUp({ setTeacher }) {
     }).then((resp) => {
       setIsLoading(false);
       if (resp.ok) {
-        resp.json().then((user) => setTeacher(null));
+        resp.json().then((user) => setUser(null));
         history.push("/login");
       } else {
         resp.json().then((data) => setErrors(data.errors));

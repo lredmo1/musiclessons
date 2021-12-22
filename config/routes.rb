@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :teachers, only: [:index, :show]
 
   post "/signup", to: "users#create"
+  post "/signup/student", to: "users#newstudent"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/me", to: "users#show"

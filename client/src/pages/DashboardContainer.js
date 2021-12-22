@@ -1,8 +1,8 @@
 import TeacherDashboard from '../components/TeacherDashboard';
 
-function DashboardContainer() {
+function DashboardContainer({user}) {
     return <>
-    <TeacherDashboard />
+    <TeacherDashboard user={user}/>
     </>;
   }
   

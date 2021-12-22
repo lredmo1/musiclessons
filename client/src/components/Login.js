@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
-function Login({ setTeacher }) {
+function Login({ setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -24,7 +24,7 @@ function Login({ setTeacher }) {
     }).then((resp) => {
       if (resp.ok) {
         resp.json().then((user) => {
-          setTeacher(user);
+          setUser(user);
           history.push("/dashboard");
         });
       } else {
