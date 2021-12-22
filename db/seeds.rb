@@ -21,18 +21,25 @@ end
 puts "Creating classrooms..."
 10.times do 
     Classroom.create(
-        teacher_id: 1,
+        teacher_id: User.create(
+            name: Faker::Name.name, 
+            email: Faker::Internet.email, 
+            username: Faker::Internet.username, 
+            password: "password").id,
         student_id: User.all.sample.id  
     )
 end
 
 10.times do 
     Classroom.create(
-        teacher_id: 2,
+        teacher_id: User.create(
+            name: Faker::Name.name, 
+            email: Faker::Internet.email, 
+            username: Faker::Internet.username, 
+            password: "password").id,
         student_id: User.all.sample.id  
     )
 end
-# what if a teacher gets assigned as a student?
 
 # Songs?
 
