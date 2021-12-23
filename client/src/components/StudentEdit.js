@@ -4,7 +4,9 @@ import styled from "styled-components";
 
 function StudentEdit({
   student,
-  handleUpdateStudent
+  setStudents,
+  setEditing,
+  students
 //   userFullName,
 //   setUserFullName,
 //   userEmail,
@@ -40,7 +42,8 @@ function StudentEdit({
           setIsLoading(false);
           if (resp.ok) {
             resp.json().then((student) => {
-              handleUpdateStudent(student)
+              setStudents(current => [...current])
+              setEditing(false)
                 setFormData({
                     name: "",
                     email: "",
