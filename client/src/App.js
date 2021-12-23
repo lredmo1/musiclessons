@@ -8,12 +8,14 @@ import DashboardContainer from "./pages/DashboardContainer"
 import { useState, useEffect } from "react";
 
 function App() {
-  const [teacher, setTeacher] = useState(null);
+  const [user, setUser] = useState(null);
+  // const [students, setStudents] = useState(null);
 
+  console.log(user)
   useEffect(() => {
     fetch("/me").then((resp) => {
       if (resp.ok) {
-        resp.json().then(setTeacher);
+        resp.json().then(setUser);
       }
     });
   }, []);
@@ -23,20 +25,20 @@ function App() {
   return (
     <div className="App">
        <BrowserRouter>
-      <Navbar teacher={teacher} setTeacher={setTeacher}/>
+      <Navbar user={user} setUser={setUser}/>
         <Switch>
         <Route exact path="/">
             <Home />
           </Route>
           <Route exact path="/signup">
-            <TeacherSignUp setTeacher={setTeacher}/>
+            <TeacherSignUp setUser={setUser}/>
           </Route>
           <Route exact path="/login">
-            <Login setTeacher={setTeacher} teacher={teacher}/>
+            <Login setUser={setUser} user={user}/>
           </Route>
-          {teacher && 
+          {user && 
           <Route exact path="/dashboard">
-            <DashboardContainer />
+            <DashboardContainer user={user}/>
           </Route>}
         </Switch>
       </BrowserRouter>
