@@ -24,6 +24,7 @@ const updatedStudents = []
       key={student.id}
       student={student}
       handleDeleteStudent={handleDeleteStudent}
+      handleUpdateStudent={handleUpdateStudent}
     />
   ));
 

@@ -20,8 +20,21 @@ function StudentSignUp({
 
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    username: "",
+    password: "",
+    password_confirmation: ""
+    })
 
   let history = useHistory();
+
+  function handleChange(e) {
+    let key = e.target.name
+    let value = e.target.value
+    setFormData({...formData, [key]: value})
+}
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -31,14 +44,7 @@ function StudentSignUp({
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        name: userFullName,
-        email: userEmail,
-        username,
-        password,
-        password_confirmation: passwordConfirmation,
-        teacher_id: user.id,
-      }),
+      body: JSON.stringify(formData),
     }).then((resp) => {
       setIsLoading(false);
       if (resp.ok) {
@@ -62,8 +68,9 @@ function StudentSignUp({
                 type="text"
                 className="user-full-name"
                 autoComplete="off"
-                value={userFullName}
-                onChange={(e) => setUserFullName(e.target.value)}
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
               ></input>
             </label>
           </div>
@@ -74,8 +81,9 @@ function StudentSignUp({
                 type="text"
                 className="user-email"
                 autoComplete="off"
-                value={userEmail}
-                onChange={(e) => setUserEmail(e.target.value)}
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
               ></input>
             </label>
           </div>
@@ -86,8 +94,9 @@ function StudentSignUp({
                 type="text"
                 className="username"
                 autoComplete="off"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
               ></input>
             </label>
           </div>
@@ -98,8 +107,9 @@ function StudentSignUp({
                 type="password"
                 className="password"
                 autoComplete="current-password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
               ></input>
             </label>
           </div>
@@ -110,8 +120,9 @@ function StudentSignUp({
                 type="password"
                 className="password-confirmation"
                 autoComplete="current-password"
-                value={passwordConfirmation}
-                onChange={(e) => setPasswordConfirmation(e.target.value)}
+                name="password_confirmation"
+                value={formData.passwordConfirmation}
+                onChange={handleChange}
               ></input>
             </label>
           </div>

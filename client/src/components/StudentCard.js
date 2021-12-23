@@ -1,7 +1,7 @@
 import { useState } from "react";
 import StudentEdit from "./StudentEdit";
 
-function StudentCard({ student, handleDeleteStudent }) {
+function StudentCard({ student, handleDeleteStudent, handleUpdateStudent }) {
   const [editing, setEditing] = useState(false);
 
   function handleDelete() {
@@ -25,7 +25,7 @@ function StudentCard({ student, handleDeleteStudent }) {
       <button>View Songs</button>
       {editing ? (
         <>
-          <StudentEdit student={student} />
+          <StudentEdit student={student} handleUpdateStudent={handleUpdateStudent}/>
           <button onClick={handleCancelEdit}>Cancel</button>
         </>
       ) : (

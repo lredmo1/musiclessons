@@ -19,9 +19,7 @@ class UsersController < ApplicationController
 
     def newStudent
         user = User.create!(user_params)
-        params = classroom_params
-        params["student_id"] = user.id
-        classroom = Classroom.create!(params)
+        classroom = Classroom.create!(student_id:user.id, teacher_id:@current_user.id)
         render json: user, status: :created
 
     end
@@ -34,13 +32,6 @@ class UsersController < ApplicationController
         end
     end
 
-    # def update
-    #     classroom = @current_user.teacher_classrooms.find_by(student_id: params[:id])
-    #     if classroom
-    #     classroom.student.update(user_params)
-    #     render json: user, status: :ok
-    #   end
-
     def update
         user = User.find(params[:id])
         user.update(user_params)
@@ -50,7 +41,7 @@ class UsersController < ApplicationController
     private
 
     def classroom_params
-        params.permit(:teacher_id)
+        # params.permit(:teacher_id: @current_user)
     end
 
     def user_params
