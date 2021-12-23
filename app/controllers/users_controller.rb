@@ -8,12 +8,7 @@ class UsersController < ApplicationController
     end
     
     def show
-        # if params[:student_id]
-        #     student = User.find(params[:student_id])
-        #     render json: student
-        #   else
         render json: @current_user
-        #   end
     end
 
     def create
@@ -31,6 +26,13 @@ class UsersController < ApplicationController
 
     end
 
+    def destroy
+        classroom = @current_user.teacher_classrooms.find_by(student_id: params[:id])
+        if classroom
+        classroom.student.destroy
+        head :no_content
+        end
+    end
 
     private
 

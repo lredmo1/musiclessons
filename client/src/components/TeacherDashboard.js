@@ -51,15 +51,7 @@ function TeacherDashboard({ user }) {
 
       {manage ? (
         <div>
-          <StudentInfoContainer
-            user={user}
-            userFullName={userFullName}
-            setUserFullName={setUserFullName}
-            userEmail={userEmail}
-            setUserEmail={setUserEmail}
-            username={username}
-            setUsername={setUsername}
-          />
+          <StudentInfoContainer user={user} />
           <button onClick={handleCancelManage}>Cancel</button>
         </div>
       ) : (
