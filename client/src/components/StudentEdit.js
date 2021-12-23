@@ -14,8 +14,8 @@ function StudentEdit({
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [formData, setFormData] = useState({
-    userFullName: student.name,
-    userEmail: student.email,
+    name: student.name,
+    email: student.email,
     username: student.username
     })
 
@@ -28,35 +28,33 @@ function StudentEdit({
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(student)
-
-        // setIsLoading(true);
-        // fetch("/edit/student", {
-        //   method: "PATCH",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        //   body: JSON.stringify(formData),
-        // }).then((resp) => {
-        //   setIsLoading(false);
-        //   if (resp.ok) {
-        //     resp.json().then((student) => {
-        //         // setShelters(current => [...current])
-        //         setFormData({
-        //             userFullName: "",
-        //             userEmail: "",
-        //             username: ""
-        //         })
-        //     });
-        //   } else {
-        //     resp.json().then((data) => setErrors(data.errors));
-        //   }
-        // });
+        setIsLoading(true);
+        fetch(`/edit/${student.id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }).then((resp) => {
+          setIsLoading(false);
+          if (resp.ok) {
+            resp.json().then((student) => {
+                // setShelters(current => [...current])
+                setFormData({
+                    name: "",
+                    email: "",
+                    username: ""
+                })
+            });
+          } else {
+            resp.json().then((data) => setErrors(data.errors));
+          }
+        });
       }
 
   return (
     <>
-      <FormStyle>
+      {/* <FormStyle> */}
         <form onSubmit={handleSubmit}>
           <div className="input">
             <label>
@@ -65,8 +63,8 @@ function StudentEdit({
                 type="text"
                 className="user-full-name"
                 autoComplete="off"
-                name="userFullName"
-                value={formData.userFullName}
+                name="name"
+                value={formData.name}
                 onChange={handleChange}
               ></input>
             </label>
@@ -78,8 +76,8 @@ function StudentEdit({
                 type="text"
                 className="user-email"
                 autoComplete="off"
-                name="userEmail"
-                value={formData.userEmail}
+                name="email"
+                value={formData.email}
                 onChange={handleChange}
               ></input>
             </label>
@@ -99,16 +97,16 @@ function StudentEdit({
           </div>
           
           <div className="button-submit">
-            <button type="submit">Submit
-              {isLoading ? "Loading..." : "Sign Up"}
+            <button type="submit">
+              {isLoading ? "Loading..." : "Submit"}
             </button>
           </div>
         </form>
-        <div className="error-wrapper">
+        {/* <div className="error-wrapper">
           {errors.length > 0 &&
             errors.map((error) => <p key={error}>{error}</p>)}
-        </div>
-      </FormStyle>
+        </div> */}
+      {/* </FormStyle> */}
     </>
   );
 }

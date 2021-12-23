@@ -9,7 +9,9 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [user, setUser] = useState(null);
+  // const [students, setStudents] = useState(null);
 
+  console.log(user)
   useEffect(() => {
     fetch("/me").then((resp) => {
       if (resp.ok) {

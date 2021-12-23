@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-    skip_before_action :authorize, only: [:create, :index]
+    skip_before_action :authorize, only: [:create]
 
 
     def index
-        users = User.all
+        users = @current_user.students
         render json: users, status: :ok
     end
     
@@ -32,6 +32,19 @@ class UsersController < ApplicationController
         classroom.student.destroy
         head :no_content
         end
+    end
+
+    # def update
+    #     classroom = @current_user.teacher_classrooms.find_by(student_id: params[:id])
+    #     if classroom
+    #     classroom.student.update(user_params)
+    #     render json: user, status: :ok
+    #   end
+
+    def update
+        user = User.find(params[:id])
+        user.update(user_params)
+        render json: user, status: :ok
     end
 
     private

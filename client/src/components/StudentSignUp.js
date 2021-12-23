@@ -53,7 +53,7 @@ function StudentSignUp({
 
   return (
     <>
-      <FormStyle>
+      {/* <FormStyle> */}
         <form onSubmit={handleSubmit}>
           <div className="input">
             <label>
@@ -125,7 +125,7 @@ function StudentSignUp({
           {errors.length > 0 &&
             errors.map((error) => <p key={error}>{error}</p>)}
         </div>
-      </FormStyle>
+      {/* </FormStyle> */}
     </>
   );
 }

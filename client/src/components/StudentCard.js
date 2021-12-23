@@ -8,7 +8,7 @@ function StudentCard({ student, handleDeleteStudent }) {
     fetch(`/users/${student.id}`, {
       method: "DELETE",
     })
-    .then((student) => console.log("Deleted"))
+    .then((item) => handleDeleteStudent(student))
   }
 
   function handleEdit() {
