@@ -8,7 +8,12 @@ class UsersController < ApplicationController
     end
     
     def show
+        # if params[:student_id]
+        #     student = User.find(params[:student_id])
+        #     render json: student
+        #   else
         render json: @current_user
+        #   end
     end
 
     def create
@@ -17,7 +22,7 @@ class UsersController < ApplicationController
         render json: user, status: :created
     end
 
-    def newstudent
+    def newStudent
         user = User.create!(user_params)
         params = classroom_params
         params["student_id"] = user.id
@@ -25,6 +30,7 @@ class UsersController < ApplicationController
         render json: user, status: :created
 
     end
+
 
     private
 

@@ -2,12 +2,22 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
-function StudentSignUp({ user, setUser, setSignup }) {
-  const [userFullName, setUserFullName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+function StudentSignUp({
+  user,
+  setUser,
+  setSignup,
+  userFullName,
+  setUserFullName,
+  userEmail,
+  setUserEmail,
+  username,
+  setUsername,
+  password,
+  setPassword,
+  passwordConfirmation,
+  setPasswordConfirmation,
+}) {
+
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -27,15 +37,14 @@ function StudentSignUp({ user, setUser, setSignup }) {
         username,
         password,
         password_confirmation: passwordConfirmation,
-        teacher_id: user.id
+        teacher_id: user.id,
       }),
     }).then((resp) => {
       setIsLoading(false);
       if (resp.ok) {
         resp.json().then((user) => {
-          // setUser(null)
-          setSignup(false)});
-        // history.push("/login");
+          setSignup(false);
+        });
       } else {
         resp.json().then((data) => setErrors(data.errors));
       }

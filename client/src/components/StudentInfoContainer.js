@@ -1,10 +1,22 @@
+import StudentCard from "./StudentCard"
+import { useState } from "react";
+
+
 function StudentContainer({user}) {
 
-    let classroomStudents = user.students.map((student) => console.log(student.name))
+    const [students, setStudents] = useState([]);
+
+    // function handleDeleteStudent(deletedStudent) {
+        // const updatedShelters = shelters.filter((shelter) => shelter.id !== deletedShelter.id);
+        // setShelters(updatedShelters);
+    // }
+
+    let classroomStudents = user.students.map((student) => <StudentCard key={student.id} student={student} 
+    // handleDeleteStudent={handleDeleteStudent}
+    />)
 
     return (<>
     {classroomStudents}
-    {console.log(user)}
     </>);
   }
   
