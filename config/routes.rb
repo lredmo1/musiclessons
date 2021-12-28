@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :classrooms
   resources :users
-  resources :songs, only: [:index, :show]
+  resources :songs, only: [:index, :show, :create]
   # resources :students, only: [:index, :show]
   # resources :teachers, only: [:index, :show]
 
