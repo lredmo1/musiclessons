@@ -1,4 +1,5 @@
-// import { Score } from 'react-vexflow'
+// This code comes from the following forum, https://stackoverflow.com/questions/68437759/javascript-to-react-cannot-execute-the-easyscore-tutorial-of-vexflow, and has been modified to meet the needs of this application.
+
 import React, { useRef, useEffect } from 'react'
 import VexFlow from 'vexflow'
 

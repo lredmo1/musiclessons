@@ -27,6 +27,7 @@ function TeacherSignUp({ setUser }) {
         username,
         password,
         password_confirmation: passwordConfirmation,
+        is_teacher: true
       }),
     }).then((resp) => {
       setIsLoading(false);

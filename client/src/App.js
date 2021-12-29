@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [user, setUser] = useState(null);
-  // const [students, setStudents] = useState(null);
+  const [isTeacher, setIsTeacher] = useState(true)
 
   console.log(user)
   useEffect(() => {
@@ -34,11 +34,11 @@ function App() {
             <TeacherSignUp setUser={setUser}/>
           </Route>
           <Route exact path="/login">
-            <Login setUser={setUser} user={user}/>
+            <Login setUser={setUser} user={user} setIsTeacher={setIsTeacher}/>
           </Route>
           {user && 
           <Route exact path="/dashboard">
-            <DashboardContainer user={user}/>
+            <DashboardContainer user={user} isTeacher={isTeacher}/>
           </Route>}
         </Switch>
       </BrowserRouter>

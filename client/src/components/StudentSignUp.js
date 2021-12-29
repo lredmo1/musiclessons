@@ -25,7 +25,8 @@ function StudentSignUp({
     email: "",
     username: "",
     password: "",
-    password_confirmation: ""
+    password_confirmation: "",
+    is_teacher: false
     })
 
   let history = useHistory();
@@ -34,6 +35,7 @@ function StudentSignUp({
     let key = e.target.name
     let value = e.target.value
     setFormData({...formData, [key]: value})
+    console.log(formData)
 }
 
   function handleSubmit(e) {
