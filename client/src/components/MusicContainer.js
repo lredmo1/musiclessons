@@ -29,7 +29,7 @@ function MusicContainer({ user }) {
       .then((data) => {
         setFormData({
           name: "",
-          data: staves,
+          data: "",
           user_id: user.id,
         });
         setSaving(false);
@@ -93,7 +93,9 @@ function MusicContainer({ user }) {
       )}
       <SheetMusic staves={staves} />
       <form onKeyUp={handleKeyPress}>
-        <input type="text" placeholder=" Click to begin" />
+        <input type="text" placeholder=" Click to begin" name="data"
+              value={formData.data}
+              onChange={handleChange}/>
       </form>
       <MusicToolBar />
       <Piano />

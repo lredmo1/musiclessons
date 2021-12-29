@@ -87,7 +87,9 @@ const Instrument = ({
         instrumentName={instrumentName}
         notes={state.notesPlaying}
       />
+    
     </Fragment>
+    
   );
 };
 
