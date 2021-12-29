@@ -7,11 +7,11 @@ function MusicContainer({ staves }) {
   return (
     <>
       <SheetMusic staves={staves} />
-      <form>
+      {/* <form>
         <input type="text" placeholder=" Click to begin" name="data" />
       </form>
       <MusicToolBar />
-      <Piano />
+      <Piano /> */}
     </>
   );
 }

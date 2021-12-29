@@ -3,14 +3,13 @@ import StudentDashboard from '../components/StudentDashboard';
 import { useState } from "react";
 
 
-function DashboardContainer({user}) {
-  const [isTeacher, setIsTeacher] = useState(true)
+function DashboardContainer({user, isTeacher}) {
 
     return <>
-    {isTeacher?
     <TeacherDashboard user={user}/>
-  : <StudentDashboard user={user}/> 
-  }
+    {/* {isTeacher? 
+    <TeacherDashboard user={user}/>
+    : <StudentDashboard user={user}/> } */}
     </>;
   }
   

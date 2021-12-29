@@ -2,13 +2,21 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
-function Login({ setUser }) {
+function Login({ setUser, setIsTeacher }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   let history = useHistory();
+
+  function teacherAdmin(user) {
+    if (user.is_teacher === true) {
+      setIsTeacher(true)
+    } else {
+      setIsTeacher(false)
+    }
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,6 +34,7 @@ function Login({ setUser }) {
       if (resp.ok) {
         resp.json().then((user) => {
           setUser(user);
+          teacherAdmin(user);
           history.push("/dashboard");
         });
       } else {
