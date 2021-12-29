@@ -18,6 +18,16 @@ function MusicContainer({ user }) {
     setFormData({ ...formData, [key]: value });
   }
 
+  function clearMusic(e) {
+    e.preventDefault();
+    setFormData({
+      name: "",
+      data: "",
+      user_id: user.id,
+    })
+    setStaves([])
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     fetch("/songs", {
@@ -96,6 +106,7 @@ function MusicContainer({ user }) {
         <input type="text" placeholder=" Click to begin" name="data"
               value={formData.data}
               onChange={handleChange}/>
+              <button onClick={clearMusic}>Clear</button>
       </form>
       <MusicToolBar />
       <Piano />
