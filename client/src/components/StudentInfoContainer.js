@@ -10,9 +10,6 @@ function StudentContainer({ user }) {
     .then(setStudents)
 }, [students])
 
-// function handleUpdateStudent(updatedStudent) {
-// const updatedStudents = students.map()
-// }
 
   function handleDeleteStudent(deletedStudent) {
   const updatedStudents = students.filter((student) => student.id !== deletedStudent.id);

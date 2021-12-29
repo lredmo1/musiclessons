@@ -42,7 +42,7 @@ function TeacherDashboard({ user }) {
     <DashboardStyle>
       {music ? (
         <div>
-          <MusicContainer />
+          <MusicContainer user={user}/>
           <button onClick={handleCancelMusic}>Cancel</button>
         </div>
       ) : (

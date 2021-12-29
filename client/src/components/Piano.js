@@ -23,7 +23,6 @@ const Piano = () => {
           isPlaying ? "piano-natural-key-playing" : ""
         } `}
         {...eventHandlers}
-        
       >
         <div className="piano-text">{text}</div>
       </button>
@@ -35,7 +34,7 @@ const Piano = () => {
     isNotePlaying,
     startPlayingNote,
     stopPlayingNote,
-    keyboardShortcut
+    keyboardShortcut,
   }) => {
     const KeyComponent = isAccidentalNote ? accidentalKey : naturalKey;
 
@@ -44,7 +43,7 @@ const Piano = () => {
       onMouseUp: stopPlayingNote,
       onTouchStart: startPlayingNote,
       onMouseOut: stopPlayingNote,
-      onTouchEnd: stopPlayingNote
+      onTouchEnd: stopPlayingNote,
     };
 
     return (
@@ -56,25 +55,29 @@ const Piano = () => {
     );
   };
 
+
+
   return (
-    <div className="piano-container">
-      <Instrument
-        instrumentName={"acoustic_grand_piano"}
-        startNote={"F3"}
-        endNote={"E5"}
-        renderPianoKey={renderPianoKey}
-        keyboardMap={{
-          C: "C4",
-          D: "D4",
-          E: "E4",
-          F: "F4",
-          G: "G4",
-          A: "A4",
-          B: "B4",
-          O: "C5",
-        }}
-      />
-    </div>
+    <>
+      <div className="piano-container">
+        <Instrument
+          instrumentName={"acoustic_grand_piano"}
+          startNote={"F3"}
+          endNote={"E5"}
+          renderPianoKey={renderPianoKey}
+          keyboardMap={{
+            C: "C4",
+            D: "D4",
+            E: "E4",
+            F: "F4",
+            G: "G4",
+            A: "A4",
+            B: "B4",
+            O: "C5",
+          }}
+        />
+      </div>
+    </>
   );
 };
 

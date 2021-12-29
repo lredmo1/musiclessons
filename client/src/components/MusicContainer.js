@@ -3,8 +3,38 @@ import MusicToolBar from "./MusicToolBar";
 import { useState } from "react";
 import Piano from "./Piano";
 
-function MusicContainer() {
+function MusicContainer({ user }) {
   const [staves, setStaves] = useState([]);
+  const [saving, setSaving] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    data: staves,
+    user_id: user.id,
+  });
+
+  function handleChange(e) {
+    let key = e.target.name;
+    let value = e.target.value;
+    setFormData({ ...formData, [key]: value });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetch("/songs", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        setFormData({
+          name: "",
+          data: "",
+          user_id: user.id,
+        });
+        setSaving(false);
+      });
+  }
 
   function handleKeyPress(e) {
     const regex = /[^a-g]/gi;
@@ -44,9 +74,28 @@ function MusicContainer() {
   }
   return (
     <>
+      {saving ? (
+        <>
+          <button onClick={() => setSaving(false)}>Cancel</button>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder=" Title"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+            <button type="submit">Submit</button>
+          </form>
+        </>
+      ) : (
+        <button onClick={() => setSaving(true)}>Save</button>
+      )}
       <SheetMusic staves={staves} />
       <form onKeyUp={handleKeyPress}>
-        <input type="text" placeholder=" Click to begin" />
+        <input type="text" placeholder=" Click to begin" name="data"
+              value={formData.data}
+              onChange={handleChange}/>
       </form>
       <MusicToolBar />
       <Piano />
