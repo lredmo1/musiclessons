@@ -6,10 +6,10 @@ import { useState } from "react";
 function DashboardContainer({user, isTeacher}) {
 
     return <>
+    {/* <TeacherDashboard user={user}/> */}
+    {isTeacher? 
     <TeacherDashboard user={user}/>
-    {/* {isTeacher? 
-    <TeacherDashboard user={user}/>
-    : <StudentDashboard user={user}/> } */}
+    : <StudentDashboard user={user}/> }
     </>;
   }
   

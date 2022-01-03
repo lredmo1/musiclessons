@@ -2,16 +2,26 @@ import { SheetMusic } from "./SheetMusic";
 import MusicToolBar from "./MusicToolBar";
 import { useState } from "react";
 import Piano from "./Piano";
+import InstrumentAudio from "./Keyboard/InstrumentAudio";
 
 function MusicContainer({ staves }) {
+  
+  function playSavedSong(e) {
+    console.log(staves)
+    let notes = []
+    staves.map((arry) => notes.push(arry[0]))
+    console.log(notes)
+    return (
+    notes.forEach((note) => <InstrumentAudio 
+    instrumentName={"acoustic_grand_piano"} 
+    notes={note} />)
+    );
+  }
+
   return (
     <>
       <SheetMusic staves={staves} />
-      {/* <form>
-        <input type="text" placeholder=" Click to begin" name="data" />
-      </form>
-      <MusicToolBar />
-      <Piano /> */}
+      <button onClick={playSavedSong}>Play</button>
     </>
   );
 }

@@ -8,7 +8,7 @@ function StudentContainer({ user }) {
     fetch("/users")
     .then((resp) => resp.json())
     .then(setStudents)
-}, [students])
+}, [])
 
 
   function handleDeleteStudent(deletedStudent) {

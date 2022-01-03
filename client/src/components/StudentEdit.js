@@ -42,7 +42,13 @@ function StudentEdit({
           setIsLoading(false);
           if (resp.ok) {
             resp.json().then((student) => {
-              setStudents(current => [...current])
+              setStudents(current => current.map((currentStudent) => {
+                if (currentStudent.id === student.id) {
+                  return student
+                } else {
+                  return currentStudent
+                }
+              }))
               setEditing(false)
                 setFormData({
                     name: "",

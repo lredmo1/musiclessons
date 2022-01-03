@@ -11,7 +11,7 @@ function Login({ setUser, setIsTeacher }) {
   let history = useHistory();
 
   function teacherAdmin(user) {
-    if (user.is_teacher === true) {
+    if (user.is_teacher) {
       setIsTeacher(true)
     } else {
       setIsTeacher(false)
