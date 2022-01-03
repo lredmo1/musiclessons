@@ -11,7 +11,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [isTeacher, setIsTeacher] = useState(true)
 
-  console.log(user)
+  // console.log(user)
   useEffect(() => {
     fetch("/me").then((resp) => {
       if (resp.ok) {

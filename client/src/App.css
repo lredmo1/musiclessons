@@ -79,6 +79,9 @@
   color: rgb(201, 201, 250);
 }
 
+.thing {
+  color: rgb(238, 237, 237);
+}
 .piano-accidental-key-wrapper {
   position: relative;
   width: 0;

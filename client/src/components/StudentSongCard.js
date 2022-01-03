@@ -26,8 +26,6 @@ function StudentSongCard({ song, user }) {
       ) {
         musicNotesArray[musicNotesArray.length - 1].push(`${note}4`);
       }
-      // console.log(musicNotesArray)
-      // setStaves(musicNotesArray);
     } else {
       let musicNotes = [];
       if (note === "o") {
@@ -36,8 +34,6 @@ function StudentSongCard({ song, user }) {
         musicNotes.push(`${note}4`);
       }
       musicNotesArray.push(musicNotes)
-      // console.log(musicNotes)
-      // setStaves((currentstate) => [...currentstate, musicNotes]);
     }})
     setStaves(musicNotesArray)
   }
@@ -46,7 +42,6 @@ function StudentSongCard({ song, user }) {
   function handlePlaySong() {
     setPlaySavedSong(true);
     let savedSong = song.data.split("")
-    console.log(savedSong)
     handleKeyPress(savedSong)
 }
 

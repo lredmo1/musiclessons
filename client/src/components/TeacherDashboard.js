@@ -40,26 +40,19 @@ function TeacherDashboard({ user }) {
 
   return (
     <DashboardStyle>
-      {music ? (
-        <div>
-          <MusicContainer user={user}/>
-          <button onClick={handleCancelMusic}>Cancel</button>
-        </div>
-      ) : (
-        <button onClick={handleMusic}>Make Music</button>
-      )}
+      <DashboardHeader><h1>Welcome {user.name}</h1></DashboardHeader>
 
-      {manage ? (
-        <div>
-          <StudentInfoContainer user={user} />
-          <button onClick={handleCancelManage}>Cancel</button>
-        </div>
-      ) : (
-        <button onClick={handleManage}>Manage Students</button>
-      )}
+      <DashboardMenu>
+      {music ? <button onClick={handleCancelMusic}>Cancel</button> : <button onClick={handleMusic}>Make Music</button>}
+      {manage ? <button onClick={handleCancelManage}>Cancel</button> : <button onClick={handleManage}>Manage Students</button>}
+      {signup ? <button onClick={handleCancelAddStudent}>Cancel</button> : <button onClick={handleAddStudent}>Add New Student</button>}
+      </DashboardMenu>
 
-      {signup ? (
-        <div>
+      <DashboardBody>
+      <div>
+        {music ? <MusicContainer user={user}/> :null}
+        {manage ? <StudentInfoContainer user={user} /> : null}
+        {signup ? (
           <StudentSignUp
             setSignup={setSignup}
             user={user}
@@ -73,12 +66,10 @@ function TeacherDashboard({ user }) {
             setPassword={setPassword}
             passwordConfirmation={passwordConfirmation}
             setPasswordConfirmation={setPasswordConfirmation}
-          />
-          <button onClick={handleCancelAddStudent}>Cancel</button>
-        </div>
-      ) : (
-        <button onClick={handleAddStudent}>Add New Student</button>
-      )}
+          />) : null}
+      </div>
+      </DashboardBody>
+
     </DashboardStyle>
   );
 }
@@ -87,12 +78,39 @@ export default TeacherDashboard;
 
 const DashboardStyle = styled.div`
   display: grid;
-  justify-content: center;
-  justify-items: center;
+  // justify-content: center;
+  grid-template-columns: 10% 1fr;
+  grid-template-rows: 100px 100vh;
+  grid-template-areas:
+  "options header"
+  "options body";
   input {
     height: 50px;
     width: 200px;
     margin: 20px;
     font-size: 30px;
+  }
+  background-color: grey;
+`;
+
+const DashboardHeader = styled.div`
+  grid-area: header;
+  padding-left: 20px;
+`;
+
+const DashboardMenu = styled.div`
+  grid-area: options;
+  border: 2px solid black;
+  background-color: rgb(208, 252, 208);
+  button {
+    background-color: rgb(208, 252, 208);
+    border: none;
+    cursor: pointer;
+  }
+`;
+
+const DashboardBody = styled.div`
+  grid-area: body;
+  background-color: white;
   }
 `;

@@ -7,10 +7,8 @@ import InstrumentAudio from "./Keyboard/InstrumentAudio";
 function MusicContainer({ staves }) {
   
   function playSavedSong(e) {
-    console.log(staves)
     let notes = []
     staves.map((arry) => notes.push(arry[0]))
-    console.log(notes)
     return (
     notes.forEach((note) => <InstrumentAudio 
     instrumentName={"acoustic_grand_piano"} 
