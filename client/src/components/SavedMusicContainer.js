@@ -6,20 +6,20 @@ import InstrumentAudio from "./Keyboard/InstrumentAudio";
 
 function MusicContainer({ staves }) {
   
-  function playSavedSong(e) {
-    let notes = []
-    staves.map((arry) => notes.push(arry[0]))
-    return (
-    notes.forEach((note) => <InstrumentAudio 
-    instrumentName={"acoustic_grand_piano"} 
-    notes={note} />)
-    );
-  }
+  // function playSavedSong(e) {
+  //   let notes = []
+  //   staves.map((arry) => notes.push(arry[0]))
+  //   return (
+  //   notes.forEach((note) => <InstrumentAudio 
+  //   instrumentName={"acoustic_grand_piano"} 
+  //   notes={note} />)
+  //   );
+  // }
 
   return (
     <>
       <SheetMusic staves={staves} />
-      <button onClick={playSavedSong}>Play</button>
+      {/* <button onClick={playSavedSong}>Play</button> */}
     </>
   );
 }

@@ -43,8 +43,8 @@ function TeacherDashboard({ user }) {
       <DashboardHeader><h1>Welcome {user.name}</h1></DashboardHeader>
 
       <DashboardMenu>
-      {music ? <button onClick={handleCancelMusic}>Cancel</button> : <button onClick={handleMusic}>Make Music</button>}
-      {manage ? <button onClick={handleCancelManage}>Cancel</button> : <button onClick={handleManage}>Manage Students</button>}
+      {music ? <button onClick={handleCancelMusic}>Cancel</button> : <button onClick={handleMusic}>Music</button>}
+      {manage ? <button onClick={handleCancelManage}>Cancel</button> : <button onClick={handleManage}>Classroom</button>}
       {signup ? <button onClick={handleCancelAddStudent}>Cancel</button> : <button onClick={handleAddStudent}>Add New Student</button>}
       </DashboardMenu>
 

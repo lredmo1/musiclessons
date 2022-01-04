@@ -2,6 +2,8 @@
 
 import React, { useRef, useEffect } from 'react'
 import VexFlow from 'vexflow'
+import styled from "styled-components";
+
 
 const VF = VexFlow.Flow
 const { Formatter, Renderer, Stave, StaveNote } = VF
@@ -78,5 +80,9 @@ export function SheetMusic({
       })
     })
   }, [staves])
-  return <div ref={container} />
+  return <StaveStyle><div ref={container} /></StaveStyle>
 }
+
+const StaveStyle = styled.div`
+padding: 0px 10px;
+`;

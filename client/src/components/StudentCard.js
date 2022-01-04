@@ -62,8 +62,8 @@ function StudentCard({
 
       {viewStudentSongs ? (
         <ViewSongContainer>
+          <StyledButton onClick={handleCancelViewSongs}>Close</StyledButton>
           {studentSongs}
-          <StyledButton onClick={handleCancelViewSongs}>Cancel</StyledButton>
         </ViewSongContainer>
       ) : (
         <StyledButton onClick={handleViewSongs}>View Songs</StyledButton>
@@ -102,17 +102,13 @@ const StudentCardsContainer = styled.div`
   }
 `;
 
-const StudentCardsDetails = styled.div`
-  p {
-    font-weight: 700;
-  }
-`;
+
 
 const ViewSongContainer = styled.div`
-  background-color: #e5d1d0;
+  background-color: #f5e4d7;
   box-shadow: 2px 2px 8px #888888;
-  padding: 40px;
+  padding: 20px;
   display: grid;
-  margin: 20px;
+  margin-top: 20px;
   justify-items: end;
 `;

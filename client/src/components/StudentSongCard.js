@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SavedMusicContainer from "./SavedMusicContainer";
+import {SheetMusic} from "./SheetMusic";
 import styled from "styled-components";
 
 function StudentSongCard({ song, user }) {
@@ -51,24 +51,24 @@ function StudentSongCard({ song, user }) {
   }
 
   return (
-    <>
+    <StudentSongContainerStyle>
       <p>{song.name}</p>
       {playSavedSong ? (
         <>
-          <StyledButton onClick={handleCancelPlaySong}>Cancel</StyledButton>
-          <SavedMusicContainer staves={staves} />
+          <StyledButton onClick={handleCancelPlaySong}>Close</StyledButton>
+          <SavedSheetMusticStyle><SheetMusic staves={staves} /></SavedSheetMusticStyle>
         </>
       ) : (
         <StyledButton onClick={handlePlaySong}>View</StyledButton>
       )}
-    </>
+    </StudentSongContainerStyle>
   );
 }
 
 export default StudentSongCard;
 
 const StyledButton = styled.button`
-background-color: #e5d1d0;
+background-color: #f5e4d7;
 padding: 5px 15px;
 margin: 5px;
 border: 3px solid #73877b;
@@ -76,4 +76,18 @@ border-radius: 7%;
 color: #73877b;
 font-size 1.05em;
 cursor: pointer;
+`;
+
+const StudentSongContainerStyle = styled.div`
+display: grid;
+grid-template-columns: 100px 100px;
+width: 67vw;
+`;
+
+const SavedSheetMusticStyle = styled.div`
+background-color: white;
+width: 970px;
+padding-top: 15px;
+margin-top: 10px;
+border-radius: 10px;
 `;
