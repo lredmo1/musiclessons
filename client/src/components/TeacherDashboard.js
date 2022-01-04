@@ -78,8 +78,8 @@ export default TeacherDashboard;
 
 const DashboardStyle = styled.div`
   display: grid;
-  // justify-content: center;
-  grid-template-columns: 10% 1fr;
+  background-color: rgb(238, 237, 237);
+  grid-template-columns: 15% 1fr;
   grid-template-rows: 100px 100vh;
   grid-template-areas:
   "options header"
@@ -89,8 +89,8 @@ const DashboardStyle = styled.div`
     width: 200px;
     margin: 20px;
     font-size: 30px;
+    border-radius: 5%;
   }
-  background-color: grey;
 `;
 
 const DashboardHeader = styled.div`
@@ -100,17 +100,21 @@ const DashboardHeader = styled.div`
 
 const DashboardMenu = styled.div`
   grid-area: options;
-  border: 2px solid black;
-  background-color: rgb(208, 252, 208);
+  background-color: #73877b;
   button {
-    background-color: rgb(208, 252, 208);
+    background-color: #73877b;
     border: none;
     cursor: pointer;
+    color: white;
+    font-size: 1.5em;
+
   }
 `;
 
 const DashboardBody = styled.div`
   grid-area: body;
-  background-color: white;
-  }
+  display: grid;
+  justify-items: center;
+  width: 100%;
+
 `;

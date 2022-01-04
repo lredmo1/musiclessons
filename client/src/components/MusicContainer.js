@@ -2,6 +2,7 @@ import { SheetMusic } from "./SheetMusic";
 import MusicToolBar from "./MusicToolBar";
 import { useState } from "react";
 import Piano from "./Piano";
+import styled from "styled-components";
 
 function MusicContainer({ user }) {
   const [staves, setStaves] = useState([]);
@@ -24,8 +25,8 @@ function MusicContainer({ user }) {
       name: "",
       data: "",
       user_id: user.id,
-    })
-    setStaves([])
+    });
+    setStaves([]);
   }
 
   function handleSubmit(e) {
@@ -83,35 +84,63 @@ function MusicContainer({ user }) {
     }
   }
   return (
-    <>
-      {saving ? (
-        <>
-          <button onClick={() => setSaving(false)}>Cancel</button>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder=" Title"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-            />
-            <button type="submit">Submit</button>
-          </form>
-        </>
-      ) : (
-        <button onClick={() => setSaving(true)}>Save</button>
-      )}
+    <MusicContainerStyle>
       <SheetMusic staves={staves} />
       <form onKeyUp={handleKeyPress}>
-        <input type="text" placeholder=" Click to begin" name="data"
-              value={formData.data}
-              onChange={handleChange}/>
-              <button onClick={clearMusic}>Clear</button>
+        <input
+          type="text"
+          placeholder=" Click to begin"
+          name="data"
+          value={formData.data}
+          onChange={handleChange}
+        />
+        <StyledButton onClick={clearMusic}>Clear</StyledButton>
+        
+        {saving ? (
+          <>
+            
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder=" Title"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+              />
+              <StyledButton className="nonkey" type="submit">Submit</StyledButton>
+              <StyledButton className="nonkey" onClick={() => setSaving(false)}>Cancel</StyledButton>
+            </form>
+          </>
+        ) : (
+          <StyledButton onClick={() => setSaving(true)}>Save</StyledButton>
+        )}
       </form>
+
       <MusicToolBar />
       <Piano />
-    </>
+    </MusicContainerStyle>
   );
 }
 
 export default MusicContainer;
+
+const MusicContainerStyle = styled.div`
+  background-color: white;
+  display: grid;
+  justify-items: center;
+  padding: 40px;
+  width: 95%;
+  border-radius: 3%;
+  box-shadow: 2px 2px 8px #888888;
+ `;
+
+ const StyledButton = styled.button`
+  background-color: white;
+  padding: 5px 15px;
+  margin: 5px;
+  border: 2px solid #73877b;
+  border-radius: 10%;
+  color: #73877b;
+  font-size 1.05em;
+  cursor: pointer;
+ `;

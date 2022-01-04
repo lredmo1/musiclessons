@@ -52,7 +52,7 @@
 
 .piano-container {
   display: inline-flex;
-  border-top: 10px solid rgb(201, 201, 250);
+  border-top: 10px solid #e5d1d0;
 }
 
 .piano-natural-key {
@@ -75,13 +75,11 @@
 }
 
 .piano-natural-key-playing {
-  border-bottom: 10px solid rgb(201, 201, 250);
-  color: rgb(201, 201, 250);
+  border-bottom: 10px #e5d1d0;
+  color: #e5d1d0;
 }
 
-.thing {
-  color: rgb(238, 237, 237);
-}
+
 .piano-accidental-key-wrapper {
   position: relative;
   width: 0;

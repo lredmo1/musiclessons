@@ -1,6 +1,7 @@
 import { useState } from "react";
 import StudentEdit from "./StudentEdit";
 import StudentSongCard from "./StudentSongCard";
+import styled from "styled-components";
 
 function StudentCard({
   student,
@@ -40,16 +41,8 @@ function StudentCard({
 
 
   return (
-    <>
+    <StudentCardsContainer>
       <p>{student.name}</p>
-      {viewStudentSongs ? (<>
-      {studentSongs}
-        <button onClick={handleCancelViewSongs}>Cancel</button>
-        </>
-      ) : (
-        <button onClick={handleViewSongs}>View Songs</button>
-      )}
-
       {editing ? (
         <>
           <StudentEdit
@@ -59,15 +52,58 @@ function StudentCard({
             setEditing={setEditing}
             students={students}
           />
-          <button onClick={handleCancelEdit}>Cancel</button>
+          <StyledButton onClick={handleCancelEdit}>Cancel</StyledButton>
         </>
       ) : (
-        <button onClick={handleEdit}>Edit</button>
+        <StyledButton onClick={handleEdit}>Edit</StyledButton>
       )}
 
-      <button onClick={handleDelete}>Delete</button>
-    </>
+      <StyledButton onClick={handleDelete}>Delete</StyledButton>
+
+      {viewStudentSongs ? (<>
+      {studentSongs}
+        <StyledButton onClick={handleCancelViewSongs}>Cancel</StyledButton>
+        </>
+      ) : (
+        <StyledButton onClick={handleViewSongs}>View Songs</StyledButton>
+      )}
+    </StudentCardsContainer>
   );
 }
 
 export default StudentCard;
+
+
+// const StudentInfoContainerStyle = styled.div`
+//   background-color: white;
+//   grid-template-columns: repeat(4, 1fr);
+//   display: grid;
+//   justify-items: center;
+//   padding: 40px;
+//   width: 95%;
+//   border-radius: 3%;
+//   box-shadow: 5px 5px 8px #888888;
+//  `;
+
+const StyledButton = styled.button`
+background-color: white;
+padding: 5px 15px;
+margin: 5px;
+border: 3px solid #73877b;
+border-radius: 7%;
+color: #73877b;
+font-size 1.05em;
+cursor: pointer;
+`;
+
+const StudentCardsContainer = styled.div`
+  p {
+    font-weight: 700;
+  }
+`;
+
+const StudentCardsDetails = styled.div`
+  p {
+    font-weight: 700;
+  }
+`;
