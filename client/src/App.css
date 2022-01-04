@@ -79,7 +79,6 @@
   color: #e5d1d0;
 }
 
-
 .piano-accidental-key-wrapper {
   position: relative;
   width: 0;
@@ -98,4 +97,10 @@
   padding: 5px;
   outline: none;
   color: #dbdbdd;
+}
+
+
+.piano-natural-key-playings {
+  border-bottom: 10px #e5d1d0;
+  color: rgba(231, 228, 228, 0.89);
 }

@@ -14,6 +14,8 @@ function MusicContainer({ user }) {
   });
 
   function handleChange(e) {
+    const regex = /[^a-g]/gi;
+    e.target.value = e.target.value.replace(regex, "");
     let key = e.target.name;
     let value = e.target.value;
     setFormData({ ...formData, [key]: value });
@@ -48,8 +50,6 @@ function MusicContainer({ user }) {
   }
 
   function handleKeyPress(e) {
-    const regex = /[^a-g]/gi;
-    e.target.value = e.target.value.replace(regex, "");
     let musicNotesArray = [...staves];
     if (
       musicNotesArray[musicNotesArray.length - 1] &&
