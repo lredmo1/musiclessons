@@ -153,7 +153,7 @@ const StudentInfoContainerStyle = styled.div`
 `;
 
 const StyledButton = styled.button`
-background-color: #0ead69;
+background: linear-gradient(#0ead69, #24835a);
 padding: 5px 15px;
 margin: 5px;
 border: none;

@@ -118,9 +118,6 @@ const DashboardMenu = styled.div`
   align-items: end;
   justify-content: center;
   box-shadow: 2px 2px 8px #888888;
-  h4 {
-    display: inline-block
-  }
 `;
 
 const DashboardBody = styled.div`

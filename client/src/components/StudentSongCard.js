@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {SheetMusic} from "./SheetMusic";
+import { SheetMusic } from "./SheetMusic";
 import styled from "styled-components";
 
 function StudentSongCard({ song, user }) {
@@ -55,12 +55,18 @@ function StudentSongCard({ song, user }) {
       <p>{song.name}</p>
       {playSavedSong ? (
         <>
-          <StyledButton onClick={handleCancelPlaySong}>Close</StyledButton>
-          <SavedSheetMusticStyle><SheetMusic staves={staves} /></SavedSheetMusticStyle>
+          <button onClick={handleCancelPlaySong}>Close</button>
         </>
       ) : (
-        <StyledButton onClick={handlePlaySong}>View</StyledButton>
+        <button onClick={handlePlaySong}>View</button>
       )}
+      {playSavedSong ? (
+        <>
+          <SavedSheetMusticStyle>
+            <SheetMusic staves={staves} />
+          </SavedSheetMusticStyle>
+        </>
+      ) : null}
     </StudentSongContainerStyle>
   );
 }
@@ -68,7 +74,7 @@ function StudentSongCard({ song, user }) {
 export default StudentSongCard;
 
 const StyledButton = styled.button`
-background-color: #0ead69;
+background: linear-gradient(#0ead69, #24835a);
 padding: 5px 15px;
 margin: 5px;
 border: none;
@@ -81,14 +87,36 @@ box-shadow: 2px 2px 8px #888888;
 
 const StudentSongContainerStyle = styled.div`
 display: grid;
-grid-template-columns: 100px 100px;
-width: 67vw;
+grid-template-columns: 1fr 100px;
+grid-template-areas:
+"title button"
+"sheetmusic sheetmusic";
+border-bottom: 2px dashed black;
+padding-left: 10px;
+padding-bottom: 10px;
+align-items: center;
+width: 65vw;
+button {
+  background: linear-gradient(#0ead69, #24835a);
+  padding: 5px 15px;
+  margin: 5px;
+  border: none;
+  border-radius: 7%;
+  color: white;
+  font-size 1.05em;
+  cursor: pointer;
+  box-shadow: 2px 2px 8px #888888;
+}
+p {
+  font-size: 1.2em;
+}
 `;
 
 const SavedSheetMusticStyle = styled.div`
-background-color: white;
-width: 970px;
-padding-top: 15px;
-margin-top: 10px;
-border-radius: 10px;
+  background-color: white;
+  width: 970px;
+  padding-top: 15px;
+  margin-top: 10px;
+  border-radius: 10px;
+  grid-area: sheetmusic;
 `;

@@ -91,25 +91,27 @@ export default StudentCard;
 //  `;
 
 const StyledButton = styled.button`
-background-color: white;
+background: linear-gradient(#0ead69, #24835a);
 padding: 5px 15px;
 margin: 5px;
-border: 3px solid #0ead69;
+border: none;
 border-radius: 7%;
-color: black;
+color: white;
 font-size 1.05em;
 cursor: pointer;
+box-shadow: 2px 2px 8px #888888;
 `;
 
 const StyledViewButton = styled.button`
-background-color: white;
+background: linear-gradient(#6d168f, #540d6e);
 padding: 5px 15px;
 margin: 5px;
-border: 3px solid #540d6e;
+border: none;
 border-radius: 7%;
-color: black;
+color: white;
 font-size 1.05em;
 cursor: pointer;
+box-shadow: 2px 2px 8px #888888;
 `;
 
 const StyledExitButton = styled.button`

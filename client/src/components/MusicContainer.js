@@ -141,12 +141,10 @@ const MusicContainerStyle = styled.div`
  `;
 
  const StyledButton = styled.button`
- background-color: #ee4266;
- border: 2px solid #540d6e;
-//  background: linear-gradient(#ee4266, #540d6e);
+ background: linear-gradient(#ee4266, #b33651);
  padding: 5px 15px;
  margin: 5px;
-//  border: none;
+ border: none;
  border-radius: 7%;
  color: white;
  font-size 1.05em;
