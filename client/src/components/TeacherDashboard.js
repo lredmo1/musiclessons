@@ -12,7 +12,7 @@ function TeacherDashboard({ user }) {
   // const [passwordConfirmation, setPasswordConfirmation] = useState("");
   // const [signup, setSignup] = useState(false);
   const [manage, setManage] = useState(false);
-  const [music, setMusic] = useState(false);
+  const [music, setMusic] = useState(true);
 
   // function handleAddStudent() {
   //   setSignup(true);
@@ -24,27 +24,31 @@ function TeacherDashboard({ user }) {
 
   function handleManage() {
     setManage(true);
+    setMusic(false);
   }
 
-  function handleCancelManage() {
-    setManage(false);
-  }
+  // function handleCancelManage() {
+  //   setManage(false);
+  //   setMusic(true);
+  // }
 
   function handleMusic() {
     setMusic(true);
+    setManage(false);
   }
 
-  function handleCancelMusic() {
-    setMusic(false);
-  }
+  // function handleCancelMusic() {
+  //   setMusic(false);
+  //   setManage(true);
+  // }
 
   return (
     <DashboardStyle>
       <DashboardHeader><h1>Welcome {user.name}</h1></DashboardHeader>
 
       <DashboardMenu>
-      {music ? <button onClick={handleCancelMusic}>Cancel</button> : <button onClick={handleMusic}>Music</button>}
-      {manage ? <button onClick={handleCancelManage}>Cancel</button> : <button onClick={handleManage}>Classroom</button>}
+      {music ? <ActiveButton onClick={handleMusic}>Music</ActiveButton> : <InactiveButton onClick={handleMusic}>Music</InactiveButton>}
+      {manage ? <ActiveButton onClick={handleManage}>Classroom</ActiveButton> : <InactiveButton onClick={handleManage}>Classroom</InactiveButton>}
       {/* {signup ? <button onClick={handleCancelAddStudent}>Cancel</button> : <button onClick={handleAddStudent}>Add New Student</button>} */}
       </DashboardMenu>
 
@@ -99,16 +103,22 @@ const DashboardHeader = styled.div`
   padding-left: 20px;
 `;
 
+
 const DashboardMenu = styled.div`
   grid-area: options;
   background-color: #73877b;
-  button {
-    background-color: #73877b;
-    border: none;
-    cursor: pointer;
-    color: white;
-    font-size: 1.5em;
-  }
+  display: grid;
+  grid-template-rows: 200px 200px;
+  align-items: end;
+  justify-items: center;
+  // button {
+  //   background-color: #73877b;
+  //   border: none;
+  //   cursor: pointer;
+  //   color: white;
+  //   font-size: 1.5em;
+  // }
+
   box-shadow: 2px 2px 8px #888888;
 `;
 
@@ -117,5 +127,24 @@ const DashboardBody = styled.div`
   display: grid;
   justify-items: center;
   width: 100%;
-
 `;
+
+const InactiveButton = styled.button`
+  background-color: #73877b;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 1.5em;
+  width: 150px;
+  height: 150px;
+`
+
+const ActiveButton = styled.button`
+  background-color: rgb(255, 255, 255, 0.2);;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 1.5em;
+  width: 150px;
+  height: 150px;
+`

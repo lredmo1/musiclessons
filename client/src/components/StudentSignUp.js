@@ -16,7 +16,8 @@ function StudentSignUp({
   setPassword,
   passwordConfirmation,
   setPasswordConfirmation,
-  setStudents
+  setStudents,
+  handleCancelAddStudent
 }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -63,6 +64,7 @@ function StudentSignUp({
   return (
     <>
       <FormStyle>
+        <h2>Add New Student</h2>
         <form onSubmit={handleSubmit}>
           <div className="input">
             <label>
@@ -132,6 +134,7 @@ function StudentSignUp({
           <StyledButton type="submit">
             {isLoading ? "Loading..." : "Sign Up"}
           </StyledButton>
+          <StyledButton onClick={handleCancelAddStudent}>Cancel</StyledButton>
         </form>
         <div className="error-wrapper">
           {errors.length > 0 &&
@@ -145,7 +148,7 @@ function StudentSignUp({
 export default StudentSignUp;
 
 const FormStyle = styled.div`
-  background-color: white;
+  background-color: #f5e4d7;
   box-shadow: 2px 2px 8px #888888;
   padding: 40px;
   display: grid;
@@ -153,7 +156,7 @@ const FormStyle = styled.div`
 `;
 
 const StyledButton = styled.button`
-background-color: white;
+background-color: #f5e4d7;
 padding: 5px 15px;
 margin: 5px;
 border: 3px solid #73877b;

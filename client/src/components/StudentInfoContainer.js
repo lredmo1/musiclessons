@@ -45,8 +45,8 @@ function StudentContainer({ user }) {
 
   return (
     <>
-    <StudentInfoContainerStyle>{classroomStudents}</StudentInfoContainerStyle>
-    {signup ? <button onClick={handleCancelAddStudent}>Cancel</button> : <button onClick={handleAddStudent}>Add New Student</button>}
+    <StudentInfoContainerStyle>
+    {signup ? null : <StyledButton onClick={handleAddStudent}>Add Student</StyledButton>}
     {signup ? (
           <StudentSignUp
             setSignup={setSignup}
@@ -62,7 +62,10 @@ function StudentContainer({ user }) {
             passwordConfirmation={passwordConfirmation}
             setPasswordConfirmation={setPasswordConfirmation}
             setStudents={setStudents}
+            handleCancelAddStudent={handleCancelAddStudent}
           />) : null}
+          {classroomStudents}
+    </StudentInfoContainerStyle>
     </>
   );
 }
@@ -79,3 +82,13 @@ const StudentInfoContainerStyle = styled.div`
   width: 70vw;
 `;
 
+const StyledButton = styled.button`
+background-color: white;
+padding: 5px 15px;
+margin: 5px;
+border: 3px solid #73877b;
+border-radius: 7%;
+color: #73877b;
+font-size 1.05em;
+cursor: pointer;
+`;

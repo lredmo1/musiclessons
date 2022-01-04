@@ -66,6 +66,7 @@ function StudentEdit({
   return (
     <>
       <FormStyle>
+      <h2>Edit Student</h2>
         <form onSubmit={handleSubmit}>
           <div className="input">
             <label>
@@ -127,7 +128,7 @@ const FormStyle = styled.div`
   padding: 40px;
   display: grid;
   margin: 20px;
-  justify-items: end;
+  // justify-items: end; (works on title! wtf)
 `;
 
 const StudentInfoContainerStyle = styled.div`
