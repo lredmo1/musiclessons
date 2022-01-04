@@ -2,6 +2,8 @@ import MusicContainer from "./MusicContainer";
 import StudentInfoContainer from "./StudentInfoContainer";
 import studenticon from "../studenticon.png"
 import musicicon from "../musicicon.png"
+import Navbar from "./Navbar"
+
 
 // import StudentSignUp from "./StudentSignUp";
 import { useState } from "react";
@@ -50,8 +52,8 @@ function TeacherDashboard({ user }) {
       <DashboardHeader><h1>Welcome {user.name}</h1></DashboardHeader>
 
       <DashboardMenu>
-      {music ? <ActiveButton onClick={handleMusic}><img src={musicicon} width="30" height="30"/><br></br>Music</ActiveButton> : <InactiveButton onClick={handleMusic}><img src={musicicon} width="30" height="30"/><br></br>Music</InactiveButton>}
-      {manage ? <ActiveButton onClick={handleManage}><img src={studenticon} width="30" height="30"/>Classroom</ActiveButton> : <InactiveButton onClick={handleManage}><img src={studenticon} width="30" height="30"/>Classroom</InactiveButton>}
+      {music ? <ActiveButton onClick={handleMusic}><img src={musicicon} width="30" height="30"/> Music</ActiveButton> : <InactiveButton onClick={handleMusic}><img src={musicicon} width="30" height="30"/> Music</InactiveButton>}
+      {manage ? <ActiveButton onClick={handleManage}><img src={studenticon} width="30" height="30"/> Classroom</ActiveButton> : <InactiveButton onClick={handleManage}><img src={studenticon} width="30" height="30"/> Classroom</InactiveButton>}
       {/* {signup ? <button onClick={handleCancelAddStudent}>Cancel</button> : <button onClick={handleAddStudent}>Add New Student</button>} */}
       </DashboardMenu>
 
@@ -86,8 +88,7 @@ export default TeacherDashboard;
 const DashboardStyle = styled.div`
   display: grid;
   background-color: rgba(231, 228, 228, 0.89);
-};
-  grid-template-columns: 15% 1fr;
+  grid-template-columns: 16% 1fr;
   grid-template-rows: 100px 100vh;
   grid-template-areas:
   "options header"
@@ -105,25 +106,21 @@ const DashboardStyle = styled.div`
 const DashboardHeader = styled.div`
   grid-area: header;
   padding-left: 20px;
+  background: linear-gradient(white, rgba(231, 228, 228, 0.89));
 `;
 
 
 const DashboardMenu = styled.div`
   grid-area: options;
-  background-color: #73877b;
+  background: linear-gradient(#540d6e, #3bceac);
   display: grid;
-  grid-template-rows: 200px 200px;
+  grid-template-rows: 200px 50px;
   align-items: end;
-  justify-items: center;
-  // button {
-  //   background-color: #73877b;
-  //   border: none;
-  //   cursor: pointer;
-  //   color: white;
-  //   font-size: 1.5em;
-  // }
-
+  justify-content: center;
   box-shadow: 2px 2px 8px #888888;
+  h4 {
+    display: inline-block
+  }
 `;
 
 const DashboardBody = styled.div`
@@ -131,24 +128,24 @@ const DashboardBody = styled.div`
   display: grid;
   justify-items: center;
   width: 100%;
+
 `;
 
 const InactiveButton = styled.button`
-  background-color: #73877b;
+  background-color: transparent;
   border: none;
   cursor: pointer;
   color: white;
   font-size: 1.5em;
-  width: 150px;
-  height: 150px;
+  // width: 300px;
+  // height: 150px;
 `
 
 const ActiveButton = styled.button`
-  background-color: rgb(255, 255, 255, 0.2);;
+  background-color: rgb(255, 255, 255, 0.2);
   border: none;
   cursor: pointer;
   color: white;
   font-size: 1.5em;
-  width: 150px;
-  height: 150px;
+  // width: 264px;
 `

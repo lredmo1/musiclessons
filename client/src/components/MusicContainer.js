@@ -2,11 +2,13 @@ import { SheetMusic } from "./SheetMusic";
 import MusicToolBar from "./MusicToolBar";
 import { useState } from "react";
 import Piano from "./Piano";
+import staffmusic from "../staffmusic.png"
 import styled from "styled-components";
 
 function MusicContainer({ user }) {
   const [staves, setStaves] = useState([]);
   const [saving, setSaving] = useState(false);
+  const [playing, setPlaying] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     data: staves,
@@ -29,6 +31,7 @@ function MusicContainer({ user }) {
       user_id: user.id,
     });
     setStaves([]);
+    setPlaying(false)
   }
 
   function handleSubmit(e) {
@@ -50,6 +53,7 @@ function MusicContainer({ user }) {
   }
 
   function handleKeyPress(e) {
+    setPlaying(true)
     let musicNotesArray = [...staves];
     if (
       musicNotesArray[musicNotesArray.length - 1] &&
@@ -85,7 +89,9 @@ function MusicContainer({ user }) {
   }
   return (
     <MusicContainerStyle>
-      <SheetMusic staves={staves} />
+      {/* <img src={staffmusic} width="500"/> */}
+      {playing ? <SheetMusic staves={staves} /> : <img src={staffmusic} width="500"/>}
+      {/* <SheetMusic staves={staves} /> */}
       <form onKeyUp={handleKeyPress}>
         <input
           type="text"
@@ -135,12 +141,15 @@ const MusicContainerStyle = styled.div`
  `;
 
  const StyledButton = styled.button`
-  background-color: white;
-  padding: 5px 15px;
-  margin: 5px;
-  border: 2px solid #73877b;
-  border-radius: 10%;
-  color: #73877b;
-  font-size 1.05em;
-  cursor: pointer;
+ background-color: #ee4266;
+ border: 2px solid #540d6e;
+//  background: linear-gradient(#ee4266, #540d6e);
+ padding: 5px 15px;
+ margin: 5px;
+//  border: none;
+ border-radius: 7%;
+ color: white;
+ font-size 1.05em;
+ cursor: pointer;
+ box-shadow: 2px 2px 8px #888888;
  `;

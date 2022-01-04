@@ -65,9 +65,10 @@ function StudentEdit({
 
   return (
     <>
-      <FormStyle>
+      <EditBodyStyle>
       <h2>Edit Student</h2>
-        <form onSubmit={handleSubmit}>
+      <StyledExitButton onClick={handleCancelEdit}>×</StyledExitButton>
+        <FormStyle onSubmit={handleSubmit}>
           <div className="input">
             <label>
               Full Name:{" "}
@@ -109,26 +110,40 @@ function StudentEdit({
           </div>
 
           <StyledButton>{isLoading ? "Loading..." : "Submit"}</StyledButton>
-          <StyledButton onClick={handleCancelEdit}>Cancel</StyledButton>
-        </form>
+          
+        </FormStyle>
         <div className="error-wrapper">
           {errors.length > 0 &&
             errors.map((error) => <p key={error}>{error}</p>)}
         </div>
-      </FormStyle>
+      </EditBodyStyle>
     </>
   );
 }
 
 export default StudentEdit;
 
-const FormStyle = styled.div`
-  background-color: #f5e4d7;
+const EditBodyStyle = styled.div`
+  background-color: #ffd23f;
   box-shadow: 2px 2px 8px #888888;
   padding: 40px;
   display: grid;
   margin: 20px;
+  grid-template-areas:
+  "title exit"
+  "form form"
+  "button .";
   // justify-items: end; (works on title! wtf)
+  h2 {
+    text-shadow: 2px 2px white;
+    font-size: 2em;
+    margin-top: 0;
+  }
+`;
+
+const FormStyle = styled.form`
+  display: grid;
+  justify-items: end;
 `;
 
 const StudentInfoContainerStyle = styled.div`
@@ -138,12 +153,28 @@ const StudentInfoContainerStyle = styled.div`
 `;
 
 const StyledButton = styled.button`
-background-color: #f5e4d7;
+background-color: #0ead69;
 padding: 5px 15px;
 margin: 5px;
-border: 3px solid #73877b;
+border: none;
 border-radius: 7%;
-color: #73877b;
+color: white;
 font-size 1.05em;
 cursor: pointer;
+box-shadow: 2px 2px 8px #888888;
+`;
+
+const StyledExitButton = styled.button`
+background-color: #ffd23f;
+margin: 5px;
+border: 1px solid black;
+border-radius: 7%;
+color: black;
+font-size 1.5em;
+cursor: pointer;
+box-shadow: 2px 2px 8px #888888;
+justify-items: end;
+height: 30px;
+margin: 0px; 
+
 `;

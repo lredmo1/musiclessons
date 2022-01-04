@@ -21,18 +21,22 @@ function StudentCard({
 
   function handleEdit() {
     setEditing(true);
+    setViewStudentSongs(false);
   }
 
   function handleCancelEdit() {
     setEditing(false);
+    setViewStudentSongs(false);
   }
 
   function handleViewSongs() {
     setViewStudentSongs(true);
+    setEditing(false);
   }
 
   function handleCancelViewSongs() {
     setViewStudentSongs(false);
+    setEditing(false);
   }
 
   let studentSongs = student.songs.map((song) => (
@@ -62,11 +66,12 @@ function StudentCard({
 
       {viewStudentSongs ? (
         <ViewSongContainer>
-          <StyledButton onClick={handleCancelViewSongs}>Close</StyledButton>
-          {studentSongs}
+          <h2>{student.name}'s Songs</h2>
+          <StyledExitButton onClick={handleCancelViewSongs}>×</StyledExitButton>
+          <StyledSongCards>{studentSongs}</StyledSongCards>
         </ViewSongContainer>
       ) : (
-        <StyledButton onClick={handleViewSongs}>View Songs</StyledButton>
+        <StyledViewButton onClick={handleViewSongs}>View Songs</StyledViewButton>
       )}
     </StudentCardsContainer>
   );
@@ -89,11 +94,35 @@ const StyledButton = styled.button`
 background-color: white;
 padding: 5px 15px;
 margin: 5px;
-border: 3px solid #73877b;
+border: 3px solid #0ead69;
 border-radius: 7%;
-color: #73877b;
+color: black;
 font-size 1.05em;
 cursor: pointer;
+`;
+
+const StyledViewButton = styled.button`
+background-color: white;
+padding: 5px 15px;
+margin: 5px;
+border: 3px solid #540d6e;
+border-radius: 7%;
+color: black;
+font-size 1.05em;
+cursor: pointer;
+`;
+
+const StyledExitButton = styled.button`
+background-color: #ffd23f;
+margin: 5px;
+border: 1px solid black;
+border-radius: 7%;
+color: black;
+font-size 1.5em;
+cursor: pointer;
+box-shadow: 2px 2px 8px #888888;
+height: 30px;
+
 `;
 
 const StudentCardsContainer = styled.div`
@@ -102,13 +131,24 @@ const StudentCardsContainer = styled.div`
   }
 `;
 
+const StyledSongCards = styled.div`
+  grid-areas: thing;
+`;
 
 
 const ViewSongContainer = styled.div`
-  background-color: #f5e4d7;
+  background-color: #ffd23f;
   box-shadow: 2px 2px 8px #888888;
   padding: 20px;
   display: grid;
   margin-top: 20px;
-  justify-items: end;
+  justify-items: start;
+  grid-template-areas:
+  "title exit"
+  "thing thing";
+  h2 {
+    text-shadow: 2px 2px white;
+    font-size: 2em;
+    margin-top: 0;
+  }
 `;

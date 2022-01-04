@@ -68,14 +68,15 @@ function StudentSongCard({ song, user }) {
 export default StudentSongCard;
 
 const StyledButton = styled.button`
-background-color: #f5e4d7;
+background-color: #0ead69;
 padding: 5px 15px;
 margin: 5px;
-border: 3px solid #73877b;
+border: none;
 border-radius: 7%;
-color: #73877b;
+color: white;
 font-size 1.05em;
 cursor: pointer;
+box-shadow: 2px 2px 8px #888888;
 `;
 
 const StudentSongContainerStyle = styled.div`

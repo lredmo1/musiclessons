@@ -86,9 +86,9 @@ const StyledButton = styled.button`
 background-color: white;
 padding: 5px 15px;
 margin: 5px;
-border: 3px solid #73877b;
+border: 3px solid #ee4266;
 border-radius: 7%;
-color: #73877b;
+color: black;
 font-size 1.05em;
 cursor: pointer;
 `;
