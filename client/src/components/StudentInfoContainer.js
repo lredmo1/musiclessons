@@ -1,9 +1,16 @@
 import StudentCard from "./StudentCard";
+import StudentSignUp from "./StudentSignUp";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 function StudentContainer({ user }) {
   const [students, setStudents] = useState([]);
+  const [signup, setSignup] = useState(false);
+  const [userFullName, setUserFullName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
 
   useEffect(() => {
     fetch("/users")
@@ -18,6 +25,14 @@ function StudentContainer({ user }) {
     setStudents(updatedStudents);
   }
 
+  function handleAddStudent() {
+    setSignup(true);
+  }
+
+  function handleCancelAddStudent() {
+    setSignup(false);
+  }
+
   let classroomStudents = students.map((student) => (
     <StudentCard
       key={student.id}
@@ -29,7 +44,26 @@ function StudentContainer({ user }) {
   ));
 
   return (
+    <>
     <StudentInfoContainerStyle>{classroomStudents}</StudentInfoContainerStyle>
+    {signup ? <button onClick={handleCancelAddStudent}>Cancel</button> : <button onClick={handleAddStudent}>Add New Student</button>}
+    {signup ? (
+          <StudentSignUp
+            setSignup={setSignup}
+            user={user}
+            userFullName={userFullName}
+            setUserFullName={setUserFullName}
+            userEmail={userEmail}
+            setUserEmail={setUserEmail}
+            username={username}
+            setUsername={setUsername}
+            password={password}
+            setPassword={setPassword}
+            passwordConfirmation={passwordConfirmation}
+            setPasswordConfirmation={setPasswordConfirmation}
+            setStudents={setStudents}
+          />) : null}
+    </>
   );
 }
 

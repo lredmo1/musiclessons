@@ -16,6 +16,7 @@ function StudentSignUp({
   setPassword,
   passwordConfirmation,
   setPasswordConfirmation,
+  setStudents
 }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -49,8 +50,9 @@ function StudentSignUp({
     }).then((resp) => {
       setIsLoading(false);
       if (resp.ok) {
-        resp.json().then((user) => {
+        resp.json().then((student) => {
           setSignup(false);
+          setStudents((currentStudents) => [...currentStudents, student]);
         });
       } else {
         resp.json().then((data) => setErrors(data.errors));

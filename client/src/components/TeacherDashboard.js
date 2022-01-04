@@ -1,26 +1,26 @@
 import MusicContainer from "./MusicContainer";
 import StudentInfoContainer from "./StudentInfoContainer";
-import StudentSignUp from "./StudentSignUp";
+// import StudentSignUp from "./StudentSignUp";
 import { useState } from "react";
 import styled from "styled-components";
 
 function TeacherDashboard({ user }) {
-  const [userFullName, setUserFullName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const [signup, setSignup] = useState(false);
+  // const [userFullName, setUserFullName] = useState("");
+  // const [userEmail, setUserEmail] = useState("");
+  // const [username, setUsername] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  // const [signup, setSignup] = useState(false);
   const [manage, setManage] = useState(false);
   const [music, setMusic] = useState(false);
 
-  function handleAddStudent() {
-    setSignup(true);
-  }
+  // function handleAddStudent() {
+  //   setSignup(true);
+  // }
 
-  function handleCancelAddStudent() {
-    setSignup(false);
-  }
+  // function handleCancelAddStudent() {
+  //   setSignup(false);
+  // }
 
   function handleManage() {
     setManage(true);
@@ -45,14 +45,14 @@ function TeacherDashboard({ user }) {
       <DashboardMenu>
       {music ? <button onClick={handleCancelMusic}>Cancel</button> : <button onClick={handleMusic}>Music</button>}
       {manage ? <button onClick={handleCancelManage}>Cancel</button> : <button onClick={handleManage}>Classroom</button>}
-      {signup ? <button onClick={handleCancelAddStudent}>Cancel</button> : <button onClick={handleAddStudent}>Add New Student</button>}
+      {/* {signup ? <button onClick={handleCancelAddStudent}>Cancel</button> : <button onClick={handleAddStudent}>Add New Student</button>} */}
       </DashboardMenu>
 
       <DashboardBody>
       <div>
         {music ? <MusicContainer user={user}/> :null}
         {manage ? <StudentInfoContainer user={user} /> : null}
-        {signup ? (
+        {/* {signup ? (
           <StudentSignUp
             setSignup={setSignup}
             user={user}
@@ -66,7 +66,7 @@ function TeacherDashboard({ user }) {
             setPassword={setPassword}
             passwordConfirmation={passwordConfirmation}
             setPasswordConfirmation={setPasswordConfirmation}
-          />) : null}
+          />) : null} */}
       </div>
       </DashboardBody>
 
