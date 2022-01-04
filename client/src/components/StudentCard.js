@@ -35,24 +35,24 @@ function StudentCard({
     setViewStudentSongs(false);
   }
 
-
-
-  let studentSongs = student.songs.map((song) => <StudentSongCard song={song} user={student} key={song.id}/>)
-
+  let studentSongs = student.songs.map((song) => (
+    <StudentSongCard song={song} user={student} key={song.id} />
+  ));
 
   return (
     <StudentCardsContainer>
       <p>{student.name}</p>
       {editing ? (
         <>
+          {/* <StyledButton onClick={handleCancelEdit}>Cancel</StyledButton> */}
           <StudentEdit
             student={student}
             handleUpdateStudent={handleUpdateStudent}
             setStudents={setStudents}
             setEditing={setEditing}
             students={students}
+            handleCancelEdit={handleCancelEdit}
           />
-          <StyledButton onClick={handleCancelEdit}>Cancel</StyledButton>
         </>
       ) : (
         <StyledButton onClick={handleEdit}>Edit</StyledButton>
@@ -60,10 +60,11 @@ function StudentCard({
 
       <StyledButton onClick={handleDelete}>Delete</StyledButton>
 
-      {viewStudentSongs ? (<>
-      {studentSongs}
-        <StyledButton onClick={handleCancelViewSongs}>Cancel</StyledButton>
-        </>
+      {viewStudentSongs ? (
+        <ViewSongContainer>
+          {studentSongs}
+          <StyledButton onClick={handleCancelViewSongs}>Cancel</StyledButton>
+        </ViewSongContainer>
       ) : (
         <StyledButton onClick={handleViewSongs}>View Songs</StyledButton>
       )}
@@ -72,7 +73,6 @@ function StudentCard({
 }
 
 export default StudentCard;
-
 
 // const StudentInfoContainerStyle = styled.div`
 //   background-color: white;
@@ -106,4 +106,13 @@ const StudentCardsDetails = styled.div`
   p {
     font-weight: 700;
   }
+`;
+
+const ViewSongContainer = styled.div`
+  background-color: #e5d1d0;
+  box-shadow: 2px 2px 8px #888888;
+  padding: 40px;
+  display: grid;
+  margin: 20px;
+  justify-items: end;
 `;

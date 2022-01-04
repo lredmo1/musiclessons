@@ -29,10 +29,7 @@ function StudentContainer({ user }) {
   ));
 
   return (
-    <StudentInfoContainerStyle>
-      <StudentCardsContainer>{classroomStudents}</StudentCardsContainer>
-      <StudentDetailsContainer>test</StudentDetailsContainer>
-    </StudentInfoContainerStyle>
+    <StudentInfoContainerStyle>{classroomStudents}</StudentInfoContainerStyle>
   );
 }
 
@@ -40,20 +37,11 @@ export default StudentContainer;
 
 const StudentInfoContainerStyle = styled.div`
   background-color: white;
-  grid-template-columns: 500px 500px;
   display: grid;
-  justify-items: center;
+  justify-items: start;
   padding: 40px;
   border-radius: 3%;
   box-shadow: 2px 2px 8px #888888;
+  width: 70vw;
 `;
 
-const StudentCardsContainer = styled.div`
-  p {
-    font-weight: 700;
-  }
-`;
-
-const StudentDetailsContainer = styled.div`
-  
-`;

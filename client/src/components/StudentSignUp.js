@@ -17,7 +17,6 @@ function StudentSignUp({
   passwordConfirmation,
   setPasswordConfirmation,
 }) {
-
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -26,17 +25,17 @@ function StudentSignUp({
     username: "",
     password: "",
     password_confirmation: "",
-    is_teacher: false
-    })
+    is_teacher: false,
+  });
 
   let history = useHistory();
 
   function handleChange(e) {
-    let key = e.target.name
-    let value = e.target.value
-    setFormData({...formData, [key]: value})
-    console.log(formData)
-}
+    let key = e.target.name;
+    let value = e.target.value;
+    setFormData({ ...formData, [key]: value });
+    console.log(formData);
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -61,11 +60,11 @@ function StudentSignUp({
 
   return (
     <>
-      {/* <FormStyle> */}
+      <FormStyle>
         <form onSubmit={handleSubmit}>
           <div className="input">
             <label>
-              Full Name:{" "}
+              Student Name:{" "}
               <input
                 type="text"
                 className="user-full-name"
@@ -78,7 +77,7 @@ function StudentSignUp({
           </div>
           <div className="input">
             <label>
-              Email:{" "}
+              Student Email:{" "}
               <input
                 type="text"
                 className="user-email"
@@ -128,17 +127,15 @@ function StudentSignUp({
               ></input>
             </label>
           </div>
-          <div className="button-submit">
-            <button type="submit">
-              {isLoading ? "Loading..." : "Sign Up"}
-            </button>
-          </div>
+          <StyledButton type="submit">
+            {isLoading ? "Loading..." : "Sign Up"}
+          </StyledButton>
         </form>
         <div className="error-wrapper">
           {errors.length > 0 &&
             errors.map((error) => <p key={error}>{error}</p>)}
         </div>
-      {/* </FormStyle> */}
+      </FormStyle>
     </>
   );
 }
@@ -146,14 +143,20 @@ function StudentSignUp({
 export default StudentSignUp;
 
 const FormStyle = styled.div`
+  background-color: white;
+  box-shadow: 2px 2px 8px #888888;
+  padding: 40px;
   display: grid;
-  grid-template-rows: repeat(3, 100px);
-  grid-template-columns: 100px;
-  justify-content: center;
-  button {
-    margin-top: 15px;
-  }
-  div {
-    margin-top: 15px;
-  }
+  margin: 20px;
+`;
+
+const StyledButton = styled.button`
+background-color: white;
+padding: 5px 15px;
+margin: 5px;
+border: 3px solid #73877b;
+border-radius: 7%;
+color: #73877b;
+font-size 1.05em;
+cursor: pointer;
 `;

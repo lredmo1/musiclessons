@@ -90,6 +90,7 @@ const DashboardStyle = styled.div`
     margin: 20px;
     font-size: 30px;
     border-radius: 5%;
+    align-self: end;
   }
 `;
 
@@ -107,8 +108,8 @@ const DashboardMenu = styled.div`
     cursor: pointer;
     color: white;
     font-size: 1.5em;
-
   }
+  box-shadow: 2px 2px 8px #888888;
 `;
 
 const DashboardBody = styled.div`
