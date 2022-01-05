@@ -103,6 +103,6 @@
 }
 
 
-.thing {
-  color: white;
+body {
+  background-color: rgba(231, 228, 228, 0.89);
 }

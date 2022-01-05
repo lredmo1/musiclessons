@@ -45,7 +45,8 @@ function StudentCard({
 
   return (
     <StudentCardsContainer>
-      <p>{student.name}</p>
+      <h2>{student.name}</h2>
+      <Try>
       {viewStudentSongs ? (
         <ViewSongContainer>
           <h2>{student.name}'s Songs</h2>
@@ -75,7 +76,7 @@ function StudentCard({
 
       <StyledButton onClick={handleDelete}>Delete</StyledButton>
 
-      
+      </Try>
     </StudentCardsContainer>
   );
 }
@@ -103,6 +104,7 @@ color: white;
 font-size 1.05em;
 cursor: pointer;
 box-shadow: 2px 2px 8px #888888;
+margin-right: 0;
 `;
 
 const StyledViewButton = styled.button`
@@ -131,16 +133,21 @@ height: 30px;
 `;
 
 const StudentCardsContainer = styled.div`
-  p {
+h2 {
     font-weight: 700;
+    display: inline;
   }
   border-bottom: 2px dashed black;
-  width: 100%;
   padding-bottom: 10px;
-`;
+ `;
 
 const StyledSongCards = styled.div`
   grid-areas: thing;
+`;
+
+const Try = styled.div`
+  display: inline;
+  
 `;
 
 const ViewSongContainer = styled.div`
@@ -149,12 +156,13 @@ const ViewSongContainer = styled.div`
   padding: 20px;
   display: grid;
   margin-top: 20px;
+  margin-bottom: 20px;
   justify-items: start;
   grid-template-areas:
     "title exit"
     "thing thing";
   h2 {
-    text-shadow: 2px 2px white;
+    text-shadow: 2px 2px 2px white;
     font-size: 2em;
     margin-top: 0;
   }

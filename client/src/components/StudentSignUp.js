@@ -159,7 +159,7 @@ const AddBodyStyle = styled.div`
   "button .";
   // justify-items: end; (works on title! wtf)
   h2 {
-    text-shadow: 2px 2px white;
+    text-shadow: 2px 2px 2px white;
     font-size: 2em;
     margin-top: 0;
   }

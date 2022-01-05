@@ -129,13 +129,13 @@ const EditBodyStyle = styled.div`
   padding: 40px;
   display: grid;
   margin: 20px;
+  width:300px;
   grid-template-areas:
   "title exit"
   "form form"
   "button .";
-  // justify-items: end; (works on title! wtf)
   h2 {
-    text-shadow: 2px 2px white;
+    text-shadow: 2px 2px  2px white;
     font-size: 2em;
     margin-top: 0;
   }

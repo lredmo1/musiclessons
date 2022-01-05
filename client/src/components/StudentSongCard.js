@@ -52,7 +52,7 @@ function StudentSongCard({ song, user }) {
 
   return (
     <StudentSongContainerStyle>
-      <p>{song.name}</p>
+      <h3>{song.name}</h3>
       {playSavedSong ? (
         <>
           <button onClick={handleCancelPlaySong}>Close</button>
@@ -93,7 +93,7 @@ grid-template-areas:
 "sheetmusic sheetmusic";
 border-bottom: 2px dashed black;
 padding-left: 10px;
-padding-bottom: 10px;
+// padding-bottom: 10px;
 align-items: center;
 width: 65vw;
 button {
@@ -107,7 +107,7 @@ button {
   cursor: pointer;
   box-shadow: 2px 2px 8px #888888;
 }
-p {
+h3 {
   font-size: 1.2em;
 }
 `;

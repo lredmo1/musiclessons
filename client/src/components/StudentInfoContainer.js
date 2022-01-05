@@ -103,8 +103,11 @@ const StyledButton = styled.button`
 `;
 
 const Thingy = styled.div`
-  // background-color: rgba(231, 228, 228, 0.89);
-  // margin-top: 20px;
-  // width: 100%;
+width: 100%;
+  // display: grid;
+  // justify-items: start;
+  // grid-template-areas:
+  //   "title exit"
+  //   "thing thing";
 
 `

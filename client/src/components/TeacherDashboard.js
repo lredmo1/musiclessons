@@ -52,8 +52,8 @@ function TeacherDashboard({ user }) {
       <DashboardHeader><h1>Welcome {user.name}</h1></DashboardHeader>
 
       <DashboardMenu>
-      {music ? <ActiveButton onClick={handleMusic}><img src={musicicon} width="30" height="30"/> Music</ActiveButton> : <InactiveButton onClick={handleMusic}><img src={musicicon} width="30" height="30"/> Music</InactiveButton>}
-      {manage ? <ActiveButton onClick={handleManage}><img src={studenticon} width="30" height="30"/> Classroom</ActiveButton> : <InactiveButton onClick={handleManage}><img src={studenticon} width="30" height="30"/> Classroom</InactiveButton>}
+      {music ? <ActiveButton onClick={handleMusic}><img src={musicicon} width="30" height="30"/>Music</ActiveButton> : <InactiveButton onClick={handleMusic}><img src={musicicon} width="30" height="30"/>Music</InactiveButton>}
+      {manage ? <ActiveButton onClick={handleManage}><img src={studenticon} width="30" height="30"/>Classroom</ActiveButton> : <InactiveButton onClick={handleManage}><img src={studenticon} width="30" height="30"/>Classroom</InactiveButton>}
       {/* {signup ? <button onClick={handleCancelAddStudent}>Cancel</button> : <button onClick={handleAddStudent}>Add New Student</button>} */}
       </DashboardMenu>
 
@@ -105,8 +105,13 @@ const DashboardStyle = styled.div`
 
 const DashboardHeader = styled.div`
   grid-area: header;
-  padding-left: 20px;
-  background: linear-gradient(white, rgba(231, 228, 228, 0.89));
+  text-align: center;
+  background-color: rgba(231, 228, 228, 0.89);
+  h1 {
+    color: #ee4266;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 2px black;
+  }
 `;
 
 
@@ -114,18 +119,18 @@ const DashboardMenu = styled.div`
   grid-area: options;
   background: linear-gradient(#540d6e, #3bceac);
   display: grid;
-  grid-template-rows: 200px 50px;
+  grid-template-rows: 180px 50px;
   align-items: end;
   justify-content: center;
   box-shadow: 2px 2px 8px #888888;
+  height: 100vh;
+  position: fixed;
 `;
 
 const DashboardBody = styled.div`
   grid-area: body;
   display: grid;
   justify-items: center;
-  width: 100%;
-
 `;
 
 const InactiveButton = styled.button`
@@ -134,8 +139,11 @@ const InactiveButton = styled.button`
   cursor: pointer;
   color: white;
   font-size: 1.5em;
-  // width: 300px;
-  // height: 150px;
+  display: flex;
+  img {
+    padding-right: 5px;
+  }
+  padding: 10px 35px;
 `
 
 const ActiveButton = styled.button`
@@ -144,5 +152,9 @@ const ActiveButton = styled.button`
   cursor: pointer;
   color: white;
   font-size: 1.5em;
-  // width: 264px;
+  display: flex;
+  img {
+    padding-right: 5px;
+  }
+  padding: 10px 35px;
 `
