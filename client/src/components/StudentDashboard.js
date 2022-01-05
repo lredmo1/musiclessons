@@ -51,7 +51,7 @@ function StudentDashboard({ user, setUser }) {
       <DashboardBody>
       <div>
         {music ? <MusicContainer user={user}/> :null}
-        {manage ? <StyledSongCards><h1>My Songs</h1>{studentSongs}</StyledSongCards> : null}
+        {manage ? <StyledSongCards><h1>My Songs</h1><StyledSongCardsContainer>{studentSongs}</StyledSongCardsContainer></StyledSongCards> : null}
         </div>
       </DashboardBody>  
     
@@ -147,3 +147,11 @@ border-radius: 3%;
 box-shadow: 2px 2px 8px #888888;
 width: 70vw;
 `;
+
+const StyledSongCardsContainer = styled.div`
+background-color: #ffd23f;
+padding-left: 20px;
+padding-bottom: 20px;
+border-radius: 5%;
+box-shadow: 2px 2px 8px #888888;
+`
