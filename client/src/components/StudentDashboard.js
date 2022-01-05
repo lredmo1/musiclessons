@@ -12,6 +12,8 @@ function StudentDashboard({ user, setUser }) {
 
   function handleMusic() {
     setMusic(true);
+    setManage(false);
+
   }
 
   function handleCancelMusic() {
@@ -20,6 +22,8 @@ function StudentDashboard({ user, setUser }) {
 
   function handleManage() {
     setManage(true);
+    setMusic(false);
+
   }
 
   function handleCancelManage() {
@@ -47,7 +51,7 @@ function StudentDashboard({ user, setUser }) {
       <DashboardBody>
       <div>
         {music ? <MusicContainer user={user}/> :null}
-        {manage ? {studentSongs} : null}
+        {manage ? <StyledSongCards><h1>My Songs</h1>{studentSongs}</StyledSongCards> : null}
         </div>
       </DashboardBody>  
     
@@ -133,4 +137,13 @@ const DashboardBody = styled.div`
   grid-area: body;
   display: grid;
   justify-items: center;
+`;
+
+const StyledSongCards = styled.div`
+background-color: white;
+
+padding: 40px;
+border-radius: 3%;
+box-shadow: 2px 2px 8px #888888;
+width: 70vw;
 `;

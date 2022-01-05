@@ -16,7 +16,7 @@ function MusicContainer({ user }) {
   });
 
   function handleChange(e) {
-    const regex = /[^a-g]/gi;
+    const regex = /[^a-g,o]/gi;
     e.target.value = e.target.value.replace(regex, "");
     let key = e.target.name;
     let value = e.target.value;
@@ -32,6 +32,12 @@ function MusicContainer({ user }) {
     });
     setStaves([]);
     setPlaying(false)
+  }
+
+  function handleTitleInput(e) {
+    let key = e.target.name;
+    let value = e.target.value;
+    setFormData({ ...formData, [key]: value });
   }
 
   function handleSubmit(e) {
@@ -101,7 +107,7 @@ function MusicContainer({ user }) {
           onChange={handleChange}
         />
         <StyledButton onClick={clearMusic}>Clear</StyledButton>
-        
+        </form>
         {saving ? (
           <>
             
@@ -111,7 +117,7 @@ function MusicContainer({ user }) {
                 placeholder=" Title"
                 name="name"
                 value={formData.name}
-                onChange={handleChange}
+                onChange={handleTitleInput}
               />
               <StyledButton className="nonkey" type="submit">Submit</StyledButton>
               <StyledButton className="nonkey" onClick={() => setSaving(false)}>Cancel</StyledButton>
@@ -120,7 +126,7 @@ function MusicContainer({ user }) {
         ) : (
           <StyledButton onClick={() => setSaving(true)}>Save</StyledButton>
         )}
-      </form>
+      
 
       <MusicToolBar />
       <Piano />
