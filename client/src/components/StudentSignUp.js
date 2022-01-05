@@ -135,11 +135,13 @@ function StudentSignUp({
           <StyledButton type="submit">
             {isLoading ? "Loading..." : "Sign Up"}
           </StyledButton>
-        </FormStyle>
         <div className="error-wrapper">
           {errors.length > 0 &&
             errors.map((error) => <p key={error}>{error}</p>)}
         </div>
+
+        </FormStyle>
+
       </AddBodyStyle>
     </>
   );
@@ -194,4 +196,12 @@ margin: 0px;
 const FormStyle = styled.form`
   display: grid;
   justify-items: end;
+  .error-wrapper {
+    justify-self: center;
+    background-color: white;
+    padding: 0px 10px; 
+    border-radius: 5%;
+    box-shadow: 2px 2px 8px #888888;
+    margin: 10px;
+  }
 `;
