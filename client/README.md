@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# _Music Lessons_
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### By _**Lisa Primeaux-Redmond**_
 
-## Available Scripts
+#### _Music Lessons is a digital instrument and teaching tool. This EdTech app was built for use in introduction to music and music theory classes lacking instruments and other necessary resources for students._
 
-In the project directory, you can run:
+## Technologies Used
 
-### `npm start`
+* _HTML_
+* _CSS_
+    * _CSS Grid Layout_
+    * _Styled Components_
+* _Javascript_
+    * _Regex_
+    * _React_
+    * _VexFlow library_
+    * _Audio Context_
+* _Ruby_
+    * _Rails_
+    * _Active Model Serializer_
+* _PostgreSQL_
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Description
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+_Use of the website begins with a teacher login or signup action. Once logged in, teachers are taken to a dashboard where they have the option of music demonstration or classroom management._
 
-### `npm test`
+_In the music demonstration session, teachers can see a digital piano with piano keys labeled and mapped to computer keyboard keys. To begin, the teacher clicks in the input box, which activates the audio, and then plays music using keyboard presses_
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+_When the user clicks on a question, the trivia board is replaced with a display of the question and an answer input section. The user can type in the answer and click the submit button. If the question is correct, the blue monster will move toward the plate of cookies. If the answer is wrong, he will move backward. The length of movement is smallest for easy questions and greatest for hard questions. The monster cannot move backward beyond the starting point. After the answer is submitted and the monster moves, the question display becomes text indicating whether the user answered correctly and a button for returning to the trivia board view to try another question. If the user successfully answers enough questions to move the monster completely across the screen to the plate of cookies, confetti falls on the screen, the trivia board and question display become a celebration view with an image of a quote about cookies and friendship, and the game is over. The page must be refreshed to play again._ 
 
-### `npm run build`
+_The full page includes the following functionality:_
+* _A full page toggle between a welcome page view and a game page view_
+* _The ability to view correct answers in the console log as a cheat code_
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+_The monster movement includes the following functionality:_
+* _The blue monster moves proportionally to the question difficulty_
+* _The blue monster wiggles and leans with each movement forward and backward_
+* _The blue monster's arrival at the plate of cookies disables the trivia board and releases confetti on the screen_
+* _The blue monster cannot go beyond the edges of his progress bar, regardless of how many questions are answered incorrectly or correctly_
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+_The trivia board includes the following functionality:_
+ * _Pulling categories from the trivia API and ensuring that a category is not repeated on multiple columns of the trivia board_
+* _Pulling questions from the trivia API based on the categories appearing in the top row of the trivia board and ensuring that a question is not repeated on multiple columns or rows of the trivia board_
+* _Analyzing numeric values for difficulty level in the trivia API, converting those values to a numeric range, and assigning questions within those ranges to easy, medium, and hard levels on the trivia board_
+* _Toggling view of multiple div sections based on use case in the game_
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+_The question input section includes string analysis to recognize correct answers in the following common API/user-input conflict cases when those conflicts do not affect the accuracy of the answer:_
+* _Text formatting or HTML snippets in some API answers_
+    * <i>Hamlet</i> vs Hamlet
+* _Punctuation differences_
+    * _Little Rock, Arkansas vs Little Rock Arkansas_
+    * _212° Fahrenheit vs 212 degrees Fahrenheit_
+* _Common misspellings or typos_
+    * _piece vs peice_
+* _Partial answer text_
+    * _Pablo Picasso vs Picasso_
+* _Variations of common abbreviations_
+    * _Mt. Kenya vs Mount Kenya_
+* _Variations in number_
+    * _octopi vs octopus_
+* _Use of articles: a, and, the_
+    * _the Federalist Papers vs Federalist Papers_
 
-### `npm run eject`
+## Setup/Installation Requirements
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* _Internet access_
+* _A web browser such as Chrome or Safari_
+* _Use of mouse and keyboard_
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Known Bugs
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* _Confetti does not fall on the full screen if developer tools are opened in the window._
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## License
 
-## Learn More
+_"Cookie-Loving Monster in Danger!" is not affiliated with Jeopardy! or Sesame Street._ 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

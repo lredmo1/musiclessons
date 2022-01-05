@@ -15,7 +15,11 @@ function App() {
   useEffect(() => {
     fetch("/me").then((resp) => {
       if (resp.ok) {
-        resp.json().then(setUser);
+        resp.json()
+        .then((user) => {
+          setUser(user) 
+          setIsTeacher(user.is_teacher);
+        })
       }
     });
   }, []);

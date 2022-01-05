@@ -5,7 +5,7 @@ import Piano from "./Piano";
 import staffmusic from "../staffmusic.png";
 import styled from "styled-components";
 
-function MusicContainer({ user }) {
+function MusicContainer({ user, setUser }) {
   const [staves, setStaves] = useState([]);
   const [saving, setSaving] = useState(false);
   const [playing, setPlaying] = useState(false);
@@ -55,6 +55,7 @@ function MusicContainer({ user }) {
           user_id: user.id,
         });
         setSaving(false);
+        setUser((currentUser) => ({...currentUser, songs: [...currentUser.songs, data]}));
       });
   }
 

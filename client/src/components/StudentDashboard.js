@@ -50,7 +50,7 @@ function StudentDashboard({ user, setUser }) {
 
       <DashboardBody>
       <div>
-        {music ? <MusicContainer user={user}/> :null}
+        {music ? <MusicContainer user={user} setUser={setUser}/> :null}
         {manage ? <StyledSongCards><h1>My Songs</h1><StyledSongCardsContainer>{studentSongs}</StyledSongCardsContainer></StyledSongCards> : null}
         </div>
       </DashboardBody>  

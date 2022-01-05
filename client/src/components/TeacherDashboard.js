@@ -62,7 +62,7 @@ function TeacherDashboard({ user, setUser }) {
 
       <DashboardBody>
       <div>
-        {music ? <MusicContainer user={user}/> :null}
+        {music ? <MusicContainer user={user} setUser={setUser}/> :null}
         {manage ? <StudentInfoContainer user={user} /> : null}
         {/* {signup ? (
           <StudentSignUp
