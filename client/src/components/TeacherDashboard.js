@@ -9,7 +9,7 @@ import Navbar from "./Navbar"
 import { useState } from "react";
 import styled from "styled-components";
 
-function TeacherDashboard({ user }) {
+function TeacherDashboard({ user, setUser }) {
   // const [userFullName, setUserFullName] = useState("");
   // const [userEmail, setUserEmail] = useState("");
   // const [username, setUsername] = useState("");
@@ -49,7 +49,10 @@ function TeacherDashboard({ user }) {
 
   return (
     <DashboardStyle>
-      <DashboardHeader><h1>Welcome {user.name}</h1></DashboardHeader>
+      <DashboardHeader>
+      <h1>Welcome {user.name}</h1>        
+      <Navbar user={user} setUser={setUser} />
+    </DashboardHeader>
 
       <DashboardMenu>
       {music ? <ActiveButton onClick={handleMusic}><img src={musicicon} width="30" height="30"/>Music</ActiveButton> : <InactiveButton onClick={handleMusic}><img src={musicicon} width="30" height="30"/>Music</InactiveButton>}
@@ -105,12 +108,18 @@ const DashboardStyle = styled.div`
 
 const DashboardHeader = styled.div`
   grid-area: header;
-  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+  "title title logout";
+  justify-content: end;
   background-color: rgba(231, 228, 228, 0.89);
   h1 {
     color: #ee4266;
     font-size: 2.5em;
     text-shadow: 2px 2px 2px black;
+    grid-area: title;
+    padding-left: 20px;
   }
 `;
 

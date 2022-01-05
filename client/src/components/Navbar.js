@@ -17,14 +17,14 @@ function Navbar({user, setUser}) {
   }
 
     return (<NavbarStyle>
-    <Link to="/" className="nav-links" style={{textDecoration: 'none'}}> Home </Link>
+    {/* <Link to="/" className="nav-links" style={{textDecoration: 'none'}}> Home </Link> */}
     {user? 
       <>
-      <Link to="/dashboard" className="nav-links" style={{textDecoration: 'none'}}> Dashboard </Link>
+      {/* <Link to="/dashboard" className="nav-links" style={{textDecoration: 'none'}}> Dashboard </Link> */}
       <div onClick={handleLogout}>Log Out</div> 
       </>:
       <>
-        <Link to="/signup" className="nav-links" style={{textDecoration: 'none'}}> Sign Up </Link>
+        {/* <Link to="/signup" className="nav-links" style={{textDecoration: 'none'}}> Sign Up </Link> */}
         <Link to="/login" className="nav-links" style={{textDecoration: 'none'}}> {user ? "Log Out" : "Log In"} </Link>
       </>
     }
@@ -35,12 +35,14 @@ function Navbar({user, setUser}) {
 
   const NavbarStyle = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 100px);
+  padding-right:40px;
+  padding-top: 10px;
+  // grid-template-columns: 100px);
   place-items: center;
   justify-content: end;
   text-decoration: none;
   a:visited {
     color: black;
-  }
-  cursor: pointer
+  };
+  cursor: pointer;
   `

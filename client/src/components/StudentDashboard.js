@@ -2,7 +2,7 @@ import { useState } from "react";
 import StudentSongCard from "./StudentSongCard";
 import MusicContainer from "./MusicContainer";
 
-function StudentDashboard({ user }) {
+function StudentDashboard({ user, setUser }) {
   const [music, setMusic] = useState(false);
   const [manage, setManage] = useState(false);
 

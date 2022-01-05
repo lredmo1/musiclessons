@@ -18,6 +18,10 @@ function Login({ setUser, setIsTeacher }) {
     }
   }
 
+  function handleBackToSignUp() {
+    history.push("/signup")
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -74,6 +78,7 @@ function Login({ setUser, setIsTeacher }) {
           <div className="button-submit">
             <button type="submit">{isLoading ? "Loading..." : "Log In"}</button>
           </div>
+          <button onClick={handleBackToSignUp}>Back to Signup</button>
         </form>
 
         <div className="error-wrapper">

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import Navbar from "./Navbar"
 
-function TeacherSignUp({ setUser }) {
+
+function TeacherSignUp({ setUser, user }) {
   const [userFullName, setUserFullName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -42,6 +44,7 @@ function TeacherSignUp({ setUser }) {
 
   return (
     <>
+    <Navbar user={user} setUser={setUser} />
       <FormStyle>
         <form onSubmit={handleSubmit}>
           <div className="input">
