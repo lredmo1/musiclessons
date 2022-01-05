@@ -10,4 +10,5 @@ function Home() {
 
 const TitleStyle = styled.h1`
 text-align: center; 
+background-color: black;
 `

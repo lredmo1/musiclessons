@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import Navbar from "./Navbar"
 
-function TeacherSignUp({ setUser }) {
+
+function TeacherSignUp({ setUser, user }) {
   const [userFullName, setUserFullName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -42,8 +44,10 @@ function TeacherSignUp({ setUser }) {
 
   return (
     <>
+    <Navbar user={user} setUser={setUser} />
       <FormStyle>
-        <form onSubmit={handleSubmit}>
+      <h2>Sign Up</h2>
+        <FormInternalStyle onSubmit={handleSubmit}>
           <div className="input">
             <label>
               Full Name:{" "}
@@ -94,7 +98,7 @@ function TeacherSignUp({ setUser }) {
           </div>
           <div className="input">
             <label>
-              Password Confirmation:
+              Password Confirmation:{" "}
               <input
                 type="password"
                 className="password-confirmation"
@@ -105,11 +109,11 @@ function TeacherSignUp({ setUser }) {
             </label>
           </div>
           <div className="button-submit">
-            <button type="submit">
+            <StyledButton type="submit">
               {isLoading ? "Loading..." : "Sign Up"}
-            </button>
+            </StyledButton>
           </div>
-        </form>
+        </FormInternalStyle>
         <div className="error-wrapper">
           {errors.length > 0 &&
             errors.map((error) => <p key={error}>{error}</p>)}
@@ -122,14 +126,44 @@ function TeacherSignUp({ setUser }) {
 export default TeacherSignUp;
 
 const FormStyle = styled.div`
+background-color: #ffd23f;
+box-shadow: 2px 2px 8px #888888;
+padding-top: 40px;
+padding-bottom: 10px;
+display: grid;
+justify-content: center;
+align-self: center;
+margin: 100px auto;
+width:500px;
+h2 {
+  text-shadow: 2px 2px  2px white;
+  font-size: 2em;
+  margin-top: 0;
+  padding-bottom: 0px;
+  text-align: center;
+}
+`;
+
+const FormInternalStyle = styled.form`
   display: grid;
-  grid-template-rows: repeat(3, 100px);
-  grid-template-columns: 100px;
-  justify-content: center;
-  button {
-    margin-top: 15px;
+  justify-items: end;
+  input {
+    height: 50px;
+    width: 200px;
+    font-size: 30px;
+    border-radius: 5%;
+    margin-bottom: 10px;
   }
-  div {
-    margin-top: 15px;
-  }
+`;
+
+const StyledButton = styled.button`
+background: linear-gradient(#0ead69, #24835a);
+padding: 5px 15px;
+margin: 5px;
+border: none;
+border-radius: 7%;
+color: white;
+font-size 1.05em;
+cursor: pointer;
+box-shadow: 2px 2px 8px #888888;
 `;

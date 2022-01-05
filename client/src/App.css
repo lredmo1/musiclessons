@@ -52,7 +52,10 @@
 
 .piano-container {
   display: inline-flex;
-  border-top: 10px solid rgb(201, 201, 250);
+  border-top: 10px solid #0ead69;
+  background: linear-gradient(#0ead69, #ffd23f);
+  box-shadow: 2px 2px 8px #888888;
+
 }
 
 .piano-natural-key {
@@ -75,8 +78,8 @@
 }
 
 .piano-natural-key-playing {
-  border-bottom: 10px solid rgb(201, 201, 250);
-  color: rgb(201, 201, 250);
+  border-bottom: 10px #3bceac;
+  color: #3bceac;
 }
 
 .piano-accidental-key-wrapper {
@@ -97,4 +100,9 @@
   padding: 5px;
   outline: none;
   color: #dbdbdd;
+}
+
+
+body {
+  background-color: rgba(231, 228, 228, 0.89);
 }

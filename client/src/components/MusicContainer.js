@@ -2,10 +2,13 @@ import { SheetMusic } from "./SheetMusic";
 import MusicToolBar from "./MusicToolBar";
 import { useState } from "react";
 import Piano from "./Piano";
+import staffmusic from "../staffmusic.png";
+import styled from "styled-components";
 
 function MusicContainer({ user }) {
   const [staves, setStaves] = useState([]);
   const [saving, setSaving] = useState(false);
+  const [playing, setPlaying] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     data: staves,
@@ -13,6 +16,8 @@ function MusicContainer({ user }) {
   });
 
   function handleChange(e) {
+    const regex = /[^a-g,o]/gi;
+    e.target.value = e.target.value.replace(regex, "");
     let key = e.target.name;
     let value = e.target.value;
     setFormData({ ...formData, [key]: value });
@@ -24,8 +29,15 @@ function MusicContainer({ user }) {
       name: "",
       data: "",
       user_id: user.id,
-    })
-    setStaves([])
+    });
+    setStaves([]);
+    setPlaying(false);
+  }
+
+  function handleTitleInput(e) {
+    let key = e.target.name;
+    let value = e.target.value;
+    setFormData({ ...formData, [key]: value });
   }
 
   function handleSubmit(e) {
@@ -47,8 +59,7 @@ function MusicContainer({ user }) {
   }
 
   function handleKeyPress(e) {
-    const regex = /[^a-g]/gi;
-    e.target.value = e.target.value.replace(regex, "");
+    setPlaying(true);
     let musicNotesArray = [...staves];
     if (
       musicNotesArray[musicNotesArray.length - 1] &&
@@ -83,35 +94,79 @@ function MusicContainer({ user }) {
     }
   }
   return (
-    <>
-      {saving ? (
-        <>
-          <button onClick={() => setSaving(false)}>Cancel</button>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder=" Title"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-            />
-            <button type="submit">Submit</button>
-          </form>
-        </>
+    <MusicContainerStyle>
+      {playing ? (
+        <SheetMusic staves={staves} />
       ) : (
-        <button onClick={() => setSaving(true)}>Save</button>
+        <img src={staffmusic} width="500" />
       )}
-      <SheetMusic staves={staves} />
-      <form onKeyUp={handleKeyPress}>
-        <input type="text" placeholder=" Click to begin" name="data"
-              value={formData.data}
-              onChange={handleChange}/>
-              <button onClick={clearMusic}>Clear</button>
-      </form>
-      <MusicToolBar />
+
+      <InputStyles>
+        <form onKeyUp={handleKeyPress}>
+          <input
+            type="text"
+            placeholder=" Click to begin"
+            name="data"
+            value={formData.data}
+            onChange={handleChange}
+          />
+          <StyledButton onClick={clearMusic}>Clear</StyledButton>
+          {saving ? null : (
+            <StyledButton onClick={() => setSaving(true)}>Save</StyledButton>
+          )}
+        </form>
+
+        {saving ? (
+          <>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder=" Title"
+                name="name"
+                value={formData.name}
+                onChange={handleTitleInput}
+              />
+              <StyledButton className="nonkey" type="submit">
+                Submit
+              </StyledButton>
+              <StyledButton className="nonkey" onClick={() => setSaving(false)}>
+                Cancel
+              </StyledButton>
+            </form>
+          </>
+        ) : null}
+      </InputStyles>
+
       <Piano />
-    </>
+    </MusicContainerStyle>
   );
 }
 
 export default MusicContainer;
+
+const MusicContainerStyle = styled.div`
+  background-color: white;
+  display: grid;
+  justify-items: center;
+  padding: 40px;
+  width: 95%;
+  border-radius: 3%;
+  box-shadow: 2px 2px 8px #888888;
+`;
+
+const StyledButton = styled.button`
+ background: linear-gradient(#ee4266, #b33651);
+ padding: 5px 15px;
+ margin: 5px;
+ border: none;
+ border-radius: 7%;
+ color: white;
+ font-size 1.05em;
+ cursor: pointer;
+ box-shadow: 2px 2px 8px #888888;
+ `;
+
+ const InputStyles = styled.div`
+  // display: grid;
+  // justify-items: start;
+`;
