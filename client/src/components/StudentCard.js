@@ -40,8 +40,16 @@ function StudentCard({
   }
 
   let studentSongs = student.songs.map((song) => (
-    <StudentSongCard song={song} user={student} key={song.id} />
-  ));
+    <StudentSongCard song={song} user={student} key={song.id} />));
+
+    function handleViewStudentSongs() {
+      if (!student.songs[0]) {
+        console.log("no songs")
+        return <h4>No songs yet</h4>
+      } else {
+        return studentSongs
+      }
+    }
 
   return (
     <StudentCardsContainer>
@@ -51,13 +59,15 @@ function StudentCard({
         <ViewSongContainer>
           <h2>{student.name}'s Songs</h2>
           <StyledExitButton onClick={handleCancelViewSongs}>×</StyledExitButton>
-          <StyledSongCards>{studentSongs}</StyledSongCards>
+          <StyledSongCards>{handleViewStudentSongs()}</StyledSongCards>
         </ViewSongContainer>
       ) : (
         <StyledViewButton onClick={handleViewSongs}>
           View Songs
         </StyledViewButton>
       )}
+
+
       {editing ? (
         <>
           {/* <StyledButton onClick={handleCancelEdit}>Cancel</StyledButton> */}
@@ -83,16 +93,6 @@ function StudentCard({
 
 export default StudentCard;
 
-// const StudentInfoContainerStyle = styled.div`
-//   background-color: white;
-//   grid-template-columns: repeat(4, 1fr);
-//   display: grid;
-//   justify-items: center;
-//   padding: 40px;
-//   width: 95%;
-//   border-radius: 3%;
-//   box-shadow: 5px 5px 8px #888888;
-//  `;
 
 const StyledButton = styled.button`
 background: linear-gradient(#0ead69, #24835a);
@@ -129,7 +129,6 @@ font-size 1.5em;
 cursor: pointer;
 box-shadow: 2px 2px 8px #888888;
 height: 30px;
-
 `;
 
 const StudentCardsContainer = styled.div`
@@ -147,6 +146,10 @@ const StyledSongCards = styled.div`
 
 const Try = styled.div`
   display: inline;
+  h4 {
+    width: 65vw;
+    font-size: 1.2em;
+  }
   
 `;
 
@@ -167,3 +170,6 @@ const ViewSongContainer = styled.div`
     margin-top: 0;
   }
 `;
+
+
+
