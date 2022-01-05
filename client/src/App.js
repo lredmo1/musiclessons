@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [user, setUser] = useState(null);
-  const [isTeacher, setIsTeacher] = useState(true);
+  const [isTeacher, setIsTeacher] = useState(false);
 
   // console.log(user)
   useEffect(() => {
