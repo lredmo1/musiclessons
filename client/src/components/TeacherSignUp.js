@@ -98,7 +98,7 @@ function TeacherSignUp({ setUser, user }) {
           </div>
           <div className="input">
             <label>
-              Password Confirmation:
+              Password Confirmation:{" "}
               <input
                 type="password"
                 className="password-confirmation"

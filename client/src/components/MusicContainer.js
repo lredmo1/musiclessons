@@ -2,13 +2,13 @@ import { SheetMusic } from "./SheetMusic";
 import MusicToolBar from "./MusicToolBar";
 import { useState } from "react";
 import Piano from "./Piano";
-import staffmusic from "../staffmusic.png"
+import staffmusic from "../staffmusic.png";
 import styled from "styled-components";
 
 function MusicContainer({ user }) {
   const [staves, setStaves] = useState([]);
   const [saving, setSaving] = useState(false);
-  const [playing, setPlaying] = useState(false)
+  const [playing, setPlaying] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     data: staves,
@@ -31,7 +31,7 @@ function MusicContainer({ user }) {
       user_id: user.id,
     });
     setStaves([]);
-    setPlaying(false)
+    setPlaying(false);
   }
 
   function handleTitleInput(e) {
@@ -59,7 +59,7 @@ function MusicContainer({ user }) {
   }
 
   function handleKeyPress(e) {
-    setPlaying(true)
+    setPlaying(true);
     let musicNotesArray = [...staves];
     if (
       musicNotesArray[musicNotesArray.length - 1] &&
@@ -95,22 +95,29 @@ function MusicContainer({ user }) {
   }
   return (
     <MusicContainerStyle>
-      {/* <img src={staffmusic} width="500"/> */}
-      {playing ? <SheetMusic staves={staves} /> : <img src={staffmusic} width="500"/>}
-      {/* <SheetMusic staves={staves} /> */}
-      <form onKeyUp={handleKeyPress}>
-        <input
-          type="text"
-          placeholder=" Click to begin"
-          name="data"
-          value={formData.data}
-          onChange={handleChange}
-        />
-        <StyledButton onClick={clearMusic}>Clear</StyledButton>
+      {playing ? (
+        <SheetMusic staves={staves} />
+      ) : (
+        <img src={staffmusic} width="500" />
+      )}
+
+      <InputStyles>
+        <form onKeyUp={handleKeyPress}>
+          <input
+            type="text"
+            placeholder=" Click to begin"
+            name="data"
+            value={formData.data}
+            onChange={handleChange}
+          />
+          <StyledButton onClick={clearMusic}>Clear</StyledButton>
+          {saving ? null : (
+            <StyledButton onClick={() => setSaving(true)}>Save</StyledButton>
+          )}
         </form>
+
         {saving ? (
           <>
-            
             <form onSubmit={handleSubmit}>
               <input
                 type="text"
@@ -119,16 +126,17 @@ function MusicContainer({ user }) {
                 value={formData.name}
                 onChange={handleTitleInput}
               />
-              <StyledButton className="nonkey" type="submit">Submit</StyledButton>
-              <StyledButton className="nonkey" onClick={() => setSaving(false)}>Cancel</StyledButton>
+              <StyledButton className="nonkey" type="submit">
+                Submit
+              </StyledButton>
+              <StyledButton className="nonkey" onClick={() => setSaving(false)}>
+                Cancel
+              </StyledButton>
             </form>
           </>
-        ) : (
-          <StyledButton onClick={() => setSaving(true)}>Save</StyledButton>
-        )}
-      
+        ) : null}
+      </InputStyles>
 
-      <MusicToolBar />
       <Piano />
     </MusicContainerStyle>
   );
@@ -144,9 +152,9 @@ const MusicContainerStyle = styled.div`
   width: 95%;
   border-radius: 3%;
   box-shadow: 2px 2px 8px #888888;
- `;
+`;
 
- const StyledButton = styled.button`
+const StyledButton = styled.button`
  background: linear-gradient(#ee4266, #b33651);
  padding: 5px 15px;
  margin: 5px;
@@ -157,3 +165,8 @@ const MusicContainerStyle = styled.div`
  cursor: pointer;
  box-shadow: 2px 2px 8px #888888;
  `;
+
+ const InputStyles = styled.div`
+  // display: grid;
+  // justify-items: start;
+`;

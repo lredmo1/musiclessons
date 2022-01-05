@@ -30,9 +30,8 @@ function StudentCard({
   }
 
   function handleViewSongs() {
-    console.log(student.songs)
-    // setViewStudentSongs(true);
-    // setEditing(false);
+    setViewStudentSongs(true);
+    setEditing(false);
   }
 
   function handleCancelViewSongs() {
