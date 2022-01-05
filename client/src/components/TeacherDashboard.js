@@ -64,7 +64,7 @@ function TeacherDashboard({ user, setUser }) {
       <DashboardBody>
       <div>
         {music ? <><MusicContainer user={user} setUser={setUser}/> 
-        <TeacherSongCard user ={user}/></>
+        <TeacherSongCard user={user} /></>
         :null}
         {manage ? <StudentInfoContainer user={user} /> : null}
   

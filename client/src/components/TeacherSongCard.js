@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 function TeacherSongCard({ song, user }) {
 
-  let teacherSongs = user.songs.map(song => <StudentSongCard song={song}/>)
+  let teacherSongs = user.songs.map(song => <StudentSongCard song={song} key={song.id}/>)
 
   return (
     <StudentSongContainerStyle>
