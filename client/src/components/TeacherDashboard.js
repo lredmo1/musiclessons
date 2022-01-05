@@ -1,5 +1,6 @@
 import MusicContainer from "./MusicContainer";
 import StudentInfoContainer from "./StudentInfoContainer";
+import TeacherSongCard from "./TeacherSongCard";
 import studenticon from "../studenticon.png"
 import musicicon from "../musicicon.png"
 import Navbar from "./Navbar"
@@ -62,23 +63,11 @@ function TeacherDashboard({ user, setUser }) {
 
       <DashboardBody>
       <div>
-        {music ? <MusicContainer user={user} setUser={setUser}/> :null}
+        {music ? <><MusicContainer user={user} setUser={setUser}/> 
+        <TeacherSongCard user ={user}/></>
+        :null}
         {manage ? <StudentInfoContainer user={user} /> : null}
-        {/* {signup ? (
-          <StudentSignUp
-            setSignup={setSignup}
-            user={user}
-            userFullName={userFullName}
-            setUserFullName={setUserFullName}
-            userEmail={userEmail}
-            setUserEmail={setUserEmail}
-            username={username}
-            setUsername={setUsername}
-            password={password}
-            setPassword={setPassword}
-            passwordConfirmation={passwordConfirmation}
-            setPasswordConfirmation={setPasswordConfirmation}
-          />) : null} */}
+  
       </div>
       </DashboardBody>
 
