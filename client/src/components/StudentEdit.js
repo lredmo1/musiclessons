@@ -64,7 +64,7 @@ function StudentEdit({
   }
 
   return (
-    <>
+    
       <EditBodyStyle>
       <h2>Edit Student</h2>
       <StyledExitButton onClick={handleCancelEdit}>×</StyledExitButton>
@@ -117,7 +117,7 @@ function StudentEdit({
             errors.map((error) => <p key={error}>{error}</p>)}
         </div>
       </EditBodyStyle>
-    </>
+    
   );
 }
 
@@ -146,11 +146,6 @@ const FormStyle = styled.form`
   justify-items: end;
 `;
 
-const StudentInfoContainerStyle = styled.div`
-  background-color: white;
-  border-radius: 3%;
-  width: 70vw;
-`;
 
 const StyledButton = styled.button`
 background: linear-gradient(#0ead69, #24835a);

@@ -46,6 +46,17 @@ function StudentCard({
   return (
     <StudentCardsContainer>
       <p>{student.name}</p>
+      {viewStudentSongs ? (
+        <ViewSongContainer>
+          <h2>{student.name}'s Songs</h2>
+          <StyledExitButton onClick={handleCancelViewSongs}>×</StyledExitButton>
+          <StyledSongCards>{studentSongs}</StyledSongCards>
+        </ViewSongContainer>
+      ) : (
+        <StyledViewButton onClick={handleViewSongs}>
+          View Songs
+        </StyledViewButton>
+      )}
       {editing ? (
         <>
           {/* <StyledButton onClick={handleCancelEdit}>Cancel</StyledButton> */}
@@ -64,15 +75,7 @@ function StudentCard({
 
       <StyledButton onClick={handleDelete}>Delete</StyledButton>
 
-      {viewStudentSongs ? (
-        <ViewSongContainer>
-          <h2>{student.name}'s Songs</h2>
-          <StyledExitButton onClick={handleCancelViewSongs}>×</StyledExitButton>
-          <StyledSongCards>{studentSongs}</StyledSongCards>
-        </ViewSongContainer>
-      ) : (
-        <StyledViewButton onClick={handleViewSongs}>View Songs</StyledViewButton>
-      )}
+      
     </StudentCardsContainer>
   );
 }
@@ -131,12 +134,14 @@ const StudentCardsContainer = styled.div`
   p {
     font-weight: 700;
   }
+  border-bottom: 2px dashed black;
+  width: 100%;
+  padding-bottom: 10px;
 `;
 
 const StyledSongCards = styled.div`
   grid-areas: thing;
 `;
-
 
 const ViewSongContainer = styled.div`
   background-color: #ffd23f;
@@ -146,8 +151,8 @@ const ViewSongContainer = styled.div`
   margin-top: 20px;
   justify-items: start;
   grid-template-areas:
-  "title exit"
-  "thing thing";
+    "title exit"
+    "thing thing";
   h2 {
     text-shadow: 2px 2px white;
     font-size: 2em;

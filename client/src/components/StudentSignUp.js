@@ -63,9 +63,10 @@ function StudentSignUp({
 
   return (
     <>
-      <FormStyle>
+      <AddBodyStyle>
         <h2>Add New Student</h2>
-        <form onSubmit={handleSubmit}>
+        <StyledAddButton onClick={handleCancelAddStudent}>×</StyledAddButton>
+        <FormStyle onSubmit={handleSubmit}>
           <div className="input">
             <label>
               Student Name:{" "}
@@ -134,34 +135,63 @@ function StudentSignUp({
           <StyledButton type="submit">
             {isLoading ? "Loading..." : "Sign Up"}
           </StyledButton>
-          <StyledButton onClick={handleCancelAddStudent}>Cancel</StyledButton>
-        </form>
+        </FormStyle>
         <div className="error-wrapper">
           {errors.length > 0 &&
             errors.map((error) => <p key={error}>{error}</p>)}
         </div>
-      </FormStyle>
+      </AddBodyStyle>
     </>
   );
 }
 
 export default StudentSignUp;
 
-const FormStyle = styled.div`
-  background-color: #f5e4d7;
+const AddBodyStyle = styled.div`
+  background-color: #ffd23f;
   box-shadow: 2px 2px 8px #888888;
   padding: 40px;
   display: grid;
   margin: 20px;
+  grid-template-areas:
+  "title exit"
+  "form form"
+  "button .";
+  // justify-items: end; (works on title! wtf)
+  h2 {
+    text-shadow: 2px 2px white;
+    font-size: 2em;
+    margin-top: 0;
+  }
 `;
 
 const StyledButton = styled.button`
-background-color: #f5e4d7;
+background: linear-gradient(#0ead69, #24835a);
 padding: 5px 15px;
 margin: 5px;
-border: 3px solid #73877b;
+border: none;
 border-radius: 7%;
-color: #73877b;
+color: white;
 font-size 1.05em;
 cursor: pointer;
+box-shadow: 2px 2px 8px #888888;
+`;
+
+const StyledAddButton = styled.button`
+background-color: #ffd23f;
+margin: 5px;
+border: 1px solid black;
+border-radius: 7%;
+color: black;
+font-size 1.5em;
+cursor: pointer;
+box-shadow: 2px 2px 8px #888888;
+justify-items: end;
+height: 30px;
+margin: 0px; 
+`;
+
+const FormStyle = styled.form`
+  display: grid;
+  justify-items: end;
 `;

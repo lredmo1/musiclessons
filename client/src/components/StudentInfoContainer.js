@@ -46,6 +46,8 @@ function StudentContainer({ user }) {
   return (
     <>
     <StudentInfoContainerStyle>
+      <h1>My Students</h1>
+      <Thingy>{classroomStudents}</Thingy>
     {signup ? null : <StyledButton onClick={handleAddStudent}>Add Student</StyledButton>}
     {signup ? (
           <StudentSignUp
@@ -64,7 +66,7 @@ function StudentContainer({ user }) {
             setStudents={setStudents}
             handleCancelAddStudent={handleCancelAddStudent}
           />) : null}
-          {classroomStudents}
+          {/* <Thingy>{classroomStudents}</Thingy> */}
     </StudentInfoContainerStyle>
     </>
   );
@@ -80,7 +82,12 @@ const StudentInfoContainerStyle = styled.div`
   border-radius: 3%;
   box-shadow: 2px 2px 8px #888888;
   width: 70vw;
+  // h1 {
+  //   text-shadow: 2px 2px #3bceac;
+  // }
 `;
+
+
 
 const StyledButton = styled.button`
   background: linear-gradient(#ee4266, #b33651);
@@ -92,4 +99,12 @@ const StyledButton = styled.button`
   font-size 1.05em;
   cursor: pointer;
   box-shadow: 2px 2px 8px #888888;
+  justify-self: end;
 `;
+
+const Thingy = styled.div`
+  // background-color: rgba(231, 228, 228, 0.89);
+  // margin-top: 20px;
+  // width: 100%;
+
+`
