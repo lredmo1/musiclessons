@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import Navbar from "./Navbar"
+import musicbg from "../musicbg.png"
 
 
 function TeacherSignUp({ setUser, user }) {
@@ -43,7 +44,7 @@ function TeacherSignUp({ setUser, user }) {
   }
 
   return (
-    <>
+    <BackgroundStyle>
     <Navbar user={user} setUser={setUser} />
       <FormStyle>
       <h2>Sign Up</h2>
@@ -120,7 +121,7 @@ function TeacherSignUp({ setUser, user }) {
         </div>
         </FormInternalStyle>
       </FormStyle>
-    </>
+    </BackgroundStyle>
   );
 }
 
@@ -143,6 +144,7 @@ h2 {
   padding-bottom: 0px;
   text-align: center;
 }
+
 `;
 
 const FormInternalStyle = styled.form`
@@ -176,3 +178,8 @@ font-size 1.05em;
 cursor: pointer;
 box-shadow: 2px 2px 8px #888888;
 `;
+
+const BackgroundStyle = styled.div`
+background-image: url(${musicbg});
+background-size: cover;
+`

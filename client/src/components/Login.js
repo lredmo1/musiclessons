@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import Navbar from "./Navbar";
+import musicbg from "../musicbg.png"
 
 function Login({ setUser, setIsTeacher }) {
   const [username, setUsername] = useState("");
@@ -49,6 +49,7 @@ function Login({ setUser, setIsTeacher }) {
   };
 
   return (
+    <BackgroundStyle>
     <LoginStyle>
       <StyledBackButton onClick={handleBackToSignUp}>Sign Up</StyledBackButton>
       <FormStyle>
@@ -91,8 +92,8 @@ function Login({ setUser, setIsTeacher }) {
 
       </FormStyle>
       
-
     </LoginStyle>
+    </BackgroundStyle>
   );
 }
 
@@ -102,8 +103,11 @@ const LoginStyle = styled.div`
 display: grid;
 grid-template-rows: 1fr 400px;
 align-items: center;
-margin: 20px auto;
-width:100vw;
+// margin: 20px auto;
+width: 100vw;
+// height: 100vh;
+// background-image: url(${musicbg});
+// background-size: cover;
 `;
 
 
@@ -162,9 +166,19 @@ box-shadow: 2px 2px 8px #888888;
 const StyledBackButton = styled.button`
 margin-left: auto;
 margin-right: 40px;
+margin-top: 20px;
 padding: 0;
 background: none;
 border: none;
 cursor: pointer;
 font-size: 15px;
+// margin: 20px auto;
+// background-color: rgba(255, 255, 255, 0.8);
+
 `;
+
+const BackgroundStyle = styled.div`
+background-image: url(${musicbg});
+background-size: cover;
+height: 100vh;
+`
