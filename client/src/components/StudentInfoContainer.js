@@ -82,9 +82,7 @@ const StudentInfoContainerStyle = styled.div`
   border-radius: 3%;
   box-shadow: 2px 2px 8px #888888;
   width: 70vw;
-  // h1 {
-  //   text-shadow: 2px 2px #3bceac;
-  // }
+  font-family: MADEOuterSansLightPERSONALUSE;
 `;
 
 
@@ -100,6 +98,7 @@ const StyledButton = styled.button`
   cursor: pointer;
   box-shadow: 2px 2px 8px #888888;
   justify-self: end;
+  font-family: MADEOuterSansLightPERSONALUSE;
 `;
 
 const Thingy = styled.div`

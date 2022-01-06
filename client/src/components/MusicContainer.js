@@ -2,13 +2,15 @@ import { SheetMusic } from "./SheetMusic";
 import MusicToolBar from "./MusicToolBar";
 import { useState } from "react";
 import Piano from "./Piano";
+import FullPiano from "./FullPiano";
 import staffmusic from "../staffmusic.png";
 import styled from "styled-components";
 
-function MusicContainer({ user }) {
+function MusicContainer({ user, setUser }) {
   const [staves, setStaves] = useState([]);
   const [saving, setSaving] = useState(false);
   const [playing, setPlaying] = useState(false);
+  const [fullPiano, setFullPiano] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     data: staves,
@@ -40,6 +42,11 @@ function MusicContainer({ user }) {
     setFormData({ ...formData, [key]: value });
   }
 
+  function handleFullPiano() {
+    console.log("clicked!")
+    setFullPiano(true)
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     fetch("/songs", {
@@ -55,6 +62,7 @@ function MusicContainer({ user }) {
           user_id: user.id,
         });
         setSaving(false);
+        setUser((currentUser) => ({...currentUser, songs: [...currentUser.songs, data]}));
       });
   }
 
@@ -93,9 +101,59 @@ function MusicContainer({ user }) {
       setStaves((currentstate) => [...currentstate, musicNotes]);
     }
   }
+
+
+let teaching = ( <>
+  {playing ? ( 
+    <SheetMusic staves={staves} />
+  ) : (
+    <img src={staffmusic} width="500" />
+  )}
+
+  <InputStyles>
+    <form onKeyUp={handleKeyPress}>
+      <input
+        type="text"
+        placeholder=" Click to begin"
+        name="data"
+        value={formData.data}
+        onChange={handleChange}
+      />
+      <StyledButton onClick={clearMusic}>Clear</StyledButton>
+      {saving ? null : (
+        <StyledButton onClick={() => setSaving(true)}>Save</StyledButton>
+      )}
+    </form>
+
+    {saving ? (
+      <>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder=" Title"
+            name="name"
+            value={formData.name}
+            onChange={handleTitleInput}
+          />
+          <StyledButton className="nonkey" type="submit">
+            Submit
+          </StyledButton>
+          <StyledButton className="nonkey" onClick={() => setSaving(false)}>
+            Cancel
+          </StyledButton>
+        </form>
+      </>
+    ) : null}
+  </InputStyles>
+
+  <Piano />
+  <StyledButton onClick={handleFullPiano}>Switch to Full Piano</StyledButton> </>
+)
+
   return (
     <MusicContainerStyle>
-      {playing ? (
+      {fullPiano ? <FullPiano setFullPiano={setFullPiano}/> : teaching}
+      {/* {playing ? (
         <SheetMusic staves={staves} />
       ) : (
         <img src={staffmusic} width="500" />
@@ -134,10 +192,11 @@ function MusicContainer({ user }) {
               </StyledButton>
             </form>
           </>
-        ) : null}
-      </InputStyles>
+        ) : null} */}
+      {/* </InputStyles> */}
 
-      <Piano />
+      {/* <Piano />
+      <button onClick={handleFullPiano}>Switch to Full Piano</button> */}
     </MusicContainerStyle>
   );
 }
@@ -157,13 +216,13 @@ const MusicContainerStyle = styled.div`
 const StyledButton = styled.button`
  background: linear-gradient(#ee4266, #b33651);
  padding: 5px 15px;
- margin: 5px;
- border: none;
+ margin: 15px 5px; border: none;
  border-radius: 7%;
  color: white;
  font-size 1.05em;
  cursor: pointer;
  box-shadow: 2px 2px 8px #888888;
+ font-family: MADEOuterSansLightPERSONALUSE;
  `;
 
  const InputStyles = styled.div`

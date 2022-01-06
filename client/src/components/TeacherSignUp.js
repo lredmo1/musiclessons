@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import Navbar from "./Navbar"
+import musicbg from "../musicbg.png"
 
 
 function TeacherSignUp({ setUser, user }) {
@@ -43,7 +44,7 @@ function TeacherSignUp({ setUser, user }) {
   }
 
   return (
-    <>
+    <BackgroundStyle>
     <Navbar user={user} setUser={setUser} />
       <FormStyle>
       <h2>Sign Up</h2>
@@ -113,13 +114,14 @@ function TeacherSignUp({ setUser, user }) {
               {isLoading ? "Loading..." : "Sign Up"}
             </StyledButton>
           </div>
-        </FormInternalStyle>
+        
         <div className="error-wrapper">
           {errors.length > 0 &&
             errors.map((error) => <p key={error}>{error}</p>)}
         </div>
+        </FormInternalStyle>
       </FormStyle>
-    </>
+    </BackgroundStyle>
   );
 }
 
@@ -142,6 +144,7 @@ h2 {
   padding-bottom: 0px;
   text-align: center;
 }
+
 `;
 
 const FormInternalStyle = styled.form`
@@ -153,6 +156,14 @@ const FormInternalStyle = styled.form`
     font-size: 30px;
     border-radius: 5%;
     margin-bottom: 10px;
+  }
+  .error-wrapper {
+    justify-self: center;
+    background-color: white;
+    padding: 0px 10px; 
+    border-radius: 5%;
+    box-shadow: 2px 2px 8px #888888;
+    margin: 10px;
   }
 `;
 
@@ -166,4 +177,12 @@ color: white;
 font-size 1.05em;
 cursor: pointer;
 box-shadow: 2px 2px 8px #888888;
+font-family: MADEOuterSansLightPERSONALUSE;
 `;
+
+const BackgroundStyle = styled.div`
+background-image: url(${musicbg});
+background-size: cover;
+height: 100vh;
+font-family: MADEOuterSansLightPERSONALUSE;
+`

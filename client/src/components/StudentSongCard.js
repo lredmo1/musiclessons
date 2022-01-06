@@ -55,10 +55,10 @@ function StudentSongCard({ song, user }) {
       <h3>{song.name}</h3>
       {playSavedSong ? (
         <>
-          <button onClick={handleCancelPlaySong}>Close</button>
+          <StyledButton onClick={handleCancelPlaySong}>Close</StyledButton>
         </>
       ) : (
-        <button onClick={handlePlaySong}>View</button>
+        <StyledButton onClick={handlePlaySong}>View</StyledButton>
       )}
       {playSavedSong ? (
         <>
@@ -83,6 +83,7 @@ color: white;
 font-size 1.05em;
 cursor: pointer;
 box-shadow: 2px 2px 8px #888888;
+font-family: MADEOuterSansLightPERSONALUSE;
 `;
 
 const StudentSongContainerStyle = styled.div`

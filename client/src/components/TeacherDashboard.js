@@ -1,5 +1,6 @@
 import MusicContainer from "./MusicContainer";
 import StudentInfoContainer from "./StudentInfoContainer";
+import TeacherSongCard from "./TeacherSongCard";
 import studenticon from "../studenticon.png"
 import musicicon from "../musicicon.png"
 import Navbar from "./Navbar"
@@ -62,23 +63,11 @@ function TeacherDashboard({ user, setUser }) {
 
       <DashboardBody>
       <div>
-        {music ? <MusicContainer user={user}/> :null}
+        {music ? <><MusicContainer user={user} setUser={setUser}/> 
+        <TeacherSongCard user={user} /></>
+        :null}
         {manage ? <StudentInfoContainer user={user} /> : null}
-        {/* {signup ? (
-          <StudentSignUp
-            setSignup={setSignup}
-            user={user}
-            userFullName={userFullName}
-            setUserFullName={setUserFullName}
-            userEmail={userEmail}
-            setUserEmail={setUserEmail}
-            username={username}
-            setUsername={setUsername}
-            password={password}
-            setPassword={setPassword}
-            passwordConfirmation={passwordConfirmation}
-            setPasswordConfirmation={setPasswordConfirmation}
-          />) : null} */}
+  
       </div>
       </DashboardBody>
 
@@ -112,8 +101,9 @@ const DashboardHeader = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas:
   "title title logout";
-  justify-content: end;
+  justify-items: end;
   background-color: rgba(231, 228, 228, 0.89);
+  background: linear-gradient(to right, rgba(231, 228, 228, 0.89), #3bceac, rgba(231, 228, 228, 0.89));
   h1 {
     color: #ee4266;
     font-size: 2.5em;
@@ -153,6 +143,7 @@ const InactiveButton = styled.button`
     padding-right: 5px;
   }
   padding: 10px 35px;
+  font-family: MADEOuterSansLightPERSONALUSE;
 `
 
 const ActiveButton = styled.button`
@@ -166,4 +157,5 @@ const ActiveButton = styled.button`
     padding-right: 5px;
   }
   padding: 10px 35px;
+  font-family: MADEOuterSansLightPERSONALUSE;
 `

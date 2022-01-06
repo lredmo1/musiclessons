@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import Navbar from "./Navbar";
+import musicbg from "../musicbg.png"
 
 function Login({ setUser, setIsTeacher }) {
   const [username, setUsername] = useState("");
@@ -49,6 +49,7 @@ function Login({ setUser, setIsTeacher }) {
   };
 
   return (
+    <BackgroundStyle>
     <LoginStyle>
       <StyledBackButton onClick={handleBackToSignUp}>Sign Up</StyledBackButton>
       <FormStyle>
@@ -81,17 +82,18 @@ function Login({ setUser, setIsTeacher }) {
           <div className="button-submit">
             <StyledButton type="submit">{isLoading ? "Loading..." : "Log In"}</StyledButton>
           </div>
-        </FormInternalStyle>
+
         <div className="error-wrapper">
           {errors.length > 0 &&
             errors.map((error) => <p key={error}>{error}</p>)}
         </div>
         
+        </FormInternalStyle>
 
       </FormStyle>
       
-
     </LoginStyle>
+    </BackgroundStyle>
   );
 }
 
@@ -101,8 +103,11 @@ const LoginStyle = styled.div`
 display: grid;
 grid-template-rows: 1fr 400px;
 align-items: center;
-margin: 20px auto;
-width:100vw;
+// margin: 20px auto;
+width: 100vw;
+// height: 100vh;
+// background-image: url(${musicbg});
+// background-size: cover;
 `;
 
 
@@ -135,6 +140,14 @@ const FormInternalStyle = styled.form`
     border-radius: 5%;
     margin-bottom: 10px;
   }
+  .error-wrapper {
+    justify-self: center;
+    background-color: white;
+    padding: 0px 10px; 
+    border-radius: 5%;
+    box-shadow: 2px 2px 8px #888888;
+    margin: 10px;
+  }
 `;
 
 
@@ -148,14 +161,26 @@ color: white;
 font-size 1.05em;
 cursor: pointer;
 box-shadow: 2px 2px 8px #888888;
+font-family: MADEOuterSansLightPERSONALUSE;
 `;
 
 const StyledBackButton = styled.button`
 margin-left: auto;
 margin-right: 40px;
+margin-top: 20px;
 padding: 0;
 background: none;
 border: none;
 cursor: pointer;
 font-size: 15px;
+// margin: 20px auto;
+// background-color: rgba(255, 255, 255, 0.8);
+font-family: MADEOuterSansLightPERSONALUSE;
 `;
+
+const BackgroundStyle = styled.div`
+background-image: url(${musicbg});
+background-size: cover;
+height: 100vh;
+font-family: MADEOuterSansLightPERSONALUSE;
+`

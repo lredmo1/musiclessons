@@ -50,6 +50,20 @@
   background: #444;
 } */
 
+@font-face {
+  font-family: MADEOuterSansBlackPERSONALUSE;
+  src: url(./fonts/MADEOuterSansBlackPERSONALUSE.otf);
+}
+
+@font-face {
+  font-family: MADEOuterSansLightPERSONALUSE;
+  src: url(./fonts/MADEOuterSansLightPERSONALUSE.otf);
+}
+
+body {
+  font-family: MADEOuterSansLightPERSONALUSE;
+
+}
 .piano-container {
   display: inline-flex;
   border-top: 10px solid #0ead69;
