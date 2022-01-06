@@ -84,10 +84,12 @@ const DashboardHeader = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas: "title title logout";
-  justify-content: end;
+  justify-items: end;
   background-color: rgba(231, 228, 228, 0.89);
+  background: linear-gradient(to right, rgba(231, 228, 228, 0.89), #3bceac, rgba(231, 228, 228, 0.89));
+
   h1 {
-    color: #ee4266;
+    color: #ffd23f;
     font-size: 2.5em;
     text-shadow: 2px 2px 2px black;
     grid-area: title;
