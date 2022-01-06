@@ -105,6 +105,7 @@ font-size 1.05em;
 cursor: pointer;
 box-shadow: 2px 2px 8px #888888;
 margin-right: 0;
+font-family: MADEOuterSansLightPERSONALUSE;
 `;
 
 const StyledViewButton = styled.button`
@@ -138,6 +139,7 @@ h2 {
   }
   border-bottom: 2px dashed black;
   padding-bottom: 10px;
+  font-family: MADEOuterSansLightPERSONALUSE;
  `;
 
 const StyledSongCards = styled.div`

@@ -177,9 +177,12 @@ color: white;
 font-size 1.05em;
 cursor: pointer;
 box-shadow: 2px 2px 8px #888888;
+font-family: MADEOuterSansLightPERSONALUSE;
 `;
 
 const BackgroundStyle = styled.div`
 background-image: url(${musicbg});
 background-size: cover;
+height: 100vh;
+font-family: MADEOuterSansLightPERSONALUSE;
 `

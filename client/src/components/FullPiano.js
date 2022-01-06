@@ -106,7 +106,7 @@ const FullPiano = ({setFullPiano}) => {
         }}
       />
     </div>
-    <StyledButton onClick={handleTeachingPiano}>Switch to Teaching Piano</StyledButton> 
+    <StyledButton onClick={handleTeachingPiano}>Switch to Learning Piano</StyledButton> 
     </>
   );
 };
@@ -118,9 +118,10 @@ const StyledButton = styled.button`
  padding: 5px 15px;
  margin: 15px 5px;
  border: none;
- border-radius: 7%;
+ border-radius: 5%;
  color: white;
  font-size 1.05em;
  cursor: pointer;
  box-shadow: 2px 2px 8px #888888;
+ font-family: MADEOuterSansLightPERSONALUSE;
  `;

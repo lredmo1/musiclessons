@@ -129,7 +129,7 @@ const EditBodyStyle = styled.div`
   padding: 40px;
   display: grid;
   margin: 20px;
-  width:300px;
+  width: 375px;
   grid-template-areas:
   "title exit"
   "form form"

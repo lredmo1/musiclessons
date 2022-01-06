@@ -222,6 +222,7 @@ const StyledButton = styled.button`
  font-size 1.05em;
  cursor: pointer;
  box-shadow: 2px 2px 8px #888888;
+ font-family: MADEOuterSansLightPERSONALUSE;
  `;
 
  const InputStyles = styled.div`

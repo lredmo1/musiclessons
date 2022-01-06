@@ -118,6 +118,8 @@ const InactiveButton = styled.button`
     padding-right: 5px;
   }
   padding: 10px 35px;
+  font-family: MADEOuterSansLightPERSONALUSE;
+
 `
 
 const ActiveButton = styled.button`
@@ -131,6 +133,7 @@ const ActiveButton = styled.button`
     padding-right: 5px;
   }
   padding: 10px 35px;
+  font-family: MADEOuterSansLightPERSONALUSE;
 `
 
 const DashboardBody = styled.div`
