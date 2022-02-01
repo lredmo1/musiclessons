@@ -1,0 +1,39 @@
+// {
+//   "name": "musiclessons",
+//   "version": "1.0.0",
+//   "description": "#### By _**Lisa Primeaux-Redmond**_",
+//   "main": "index.js",
+//   "directories": {
+//     "lib": "lib",
+//     "test": "test"
+//   },
+//   "scripts": {
+//     "test": "echo \"Error: no test specified\" && exit 1"
+//   },
+//   "repository": {
+//     "type": "git",
+//     "url": "git+https://github.com/lredmo1/musiclessons.git"
+//   },
+//   "keywords": [],
+//   "author": "",
+//   "license": "ISC",
+//   "bugs": {
+//     "url": "https://github.com/lredmo1/musiclessons/issues"
+//   },
+//   "homepage": "https://github.com/lredmo1/musiclessons#readme"
+// }
+
+{
+  "name": "musiclessons",
+  "description": "By Lisa Primeaux-Redmond",
+  "engines": {
+    "node": "16.8.0",
+    "npm": "8.0.0"
+  },
+  "scripts": {
+    "build": "npm install --prefix client && npm run build --prefix client",
+    "clean": "rm -rf public",
+    "deploy": "cp -a client/build/. public/",
+    "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
+  }
+}
