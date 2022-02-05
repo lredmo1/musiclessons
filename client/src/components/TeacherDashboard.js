@@ -6,47 +6,26 @@ import musicicon from "../musicicon.png"
 import Navbar from "./Navbar"
 
 
-// import StudentSignUp from "./StudentSignUp";
 import { useState } from "react";
 import styled from "styled-components";
 
 function TeacherDashboard({ user, setUser }) {
-  // const [userFullName, setUserFullName] = useState("");
-  // const [userEmail, setUserEmail] = useState("");
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  // const [signup, setSignup] = useState(false);
+
   const [manage, setManage] = useState(false);
   const [music, setMusic] = useState(true);
 
-  // function handleAddStudent() {
-  //   setSignup(true);
-  // }
-
-  // function handleCancelAddStudent() {
-  //   setSignup(false);
-  // }
 
   function handleManage() {
     setManage(true);
     setMusic(false);
   }
 
-  // function handleCancelManage() {
-  //   setManage(false);
-  //   setMusic(true);
-  // }
 
   function handleMusic() {
     setMusic(true);
     setManage(false);
   }
 
-  // function handleCancelMusic() {
-  //   setMusic(false);
-  //   setManage(true);
-  // }
 
   return (
     <DashboardStyle>
@@ -58,7 +37,6 @@ function TeacherDashboard({ user, setUser }) {
       <DashboardMenu>
       {music ? <ActiveButton onClick={handleMusic}><img src={musicicon} width="30" height="30"/>Music</ActiveButton> : <InactiveButton onClick={handleMusic}><img src={musicicon} width="30" height="30"/>Music</InactiveButton>}
       {manage ? <ActiveButton onClick={handleManage}><img src={studenticon} width="30" height="30"/>Classroom</ActiveButton> : <InactiveButton onClick={handleManage}><img src={studenticon} width="30" height="30"/>Classroom</InactiveButton>}
-      {/* {signup ? <button onClick={handleCancelAddStudent}>Cancel</button> : <button onClick={handleAddStudent}>Add New Student</button>} */}
       </DashboardMenu>
 
       <DashboardBody>

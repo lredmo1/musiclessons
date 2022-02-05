@@ -153,50 +153,7 @@ let teaching = ( <>
   return (
     <MusicContainerStyle>
       {fullPiano ? <FullPiano setFullPiano={setFullPiano}/> : teaching}
-      {/* {playing ? (
-        <SheetMusic staves={staves} />
-      ) : (
-        <img src={staffmusic} width="500" />
-      )}
 
-      <InputStyles>
-        <form onKeyUp={handleKeyPress}>
-          <input
-            type="text"
-            placeholder=" Click to begin"
-            name="data"
-            value={formData.data}
-            onChange={handleChange}
-          />
-          <StyledButton onClick={clearMusic}>Clear</StyledButton>
-          {saving ? null : (
-            <StyledButton onClick={() => setSaving(true)}>Save</StyledButton>
-          )}
-        </form>
-
-        {saving ? (
-          <>
-            <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                placeholder=" Title"
-                name="name"
-                value={formData.name}
-                onChange={handleTitleInput}
-              />
-              <StyledButton className="nonkey" type="submit">
-                Submit
-              </StyledButton>
-              <StyledButton className="nonkey" onClick={() => setSaving(false)}>
-                Cancel
-              </StyledButton>
-            </form>
-          </>
-        ) : null} */}
-      {/* </InputStyles> */}
-
-      {/* <Piano />
-      <button onClick={handleFullPiano}>Switch to Full Piano</button> */}
     </MusicContainerStyle>
   );
 }

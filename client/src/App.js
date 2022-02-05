@@ -1,7 +1,5 @@
 import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-// import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
 import TeacherSignUp from "./components/TeacherSignUp";
 import Login from "./components/Login";
 import DashboardContainer from "./pages/DashboardContainer";
@@ -11,7 +9,6 @@ function App() {
   const [user, setUser] = useState(null);
   const [isTeacher, setIsTeacher] = useState(false);
 
-  // console.log(user)
   useEffect(() => {
     fetch("/me").then((resp) => {
       if (resp.ok) {
@@ -27,7 +24,6 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {/* <Navbar user={user} setUser={setUser} /> */}
         <Switch>
           {user ? (
             <Route exact path="/">

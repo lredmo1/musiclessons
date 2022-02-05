@@ -47,7 +47,7 @@ function StudentContainer({ user }) {
     <>
     <StudentInfoContainerStyle>
       <h1>My Students</h1>
-      <Thingy>{classroomStudents}</Thingy>
+      <FullWidth>{classroomStudents}</FullWidth>
     {signup ? null : <StyledButton onClick={handleAddStudent}>Add Student</StyledButton>}
     {signup ? (
           <StudentSignUp
@@ -66,7 +66,6 @@ function StudentContainer({ user }) {
             setStudents={setStudents}
             handleCancelAddStudent={handleCancelAddStudent}
           />) : null}
-          {/* <Thingy>{classroomStudents}</Thingy> */}
     </StudentInfoContainerStyle>
     </>
   );
@@ -101,12 +100,7 @@ const StyledButton = styled.button`
   font-family: MADEOuterSansLightPERSONALUSE;
 `;
 
-const Thingy = styled.div`
+const FullWidth = styled.div`
 width: 100%;
-  // display: grid;
-  // justify-items: start;
-  // grid-template-areas:
-  //   "title exit"
-  //   "thing thing";
 
 `

@@ -14,7 +14,7 @@
     * _Regex_
     * _React_
     * _VexFlow library_
-    * _Audio Context_
+    * _Soundfont Player_
 * _Ruby_
     * _Rails_
     * _Active Model Serializer_

@@ -54,7 +54,7 @@ function StudentCard({
   return (
     <StudentCardsContainer>
       <h2>{student.name}</h2>
-      <Try>
+      <Centered>
       {viewStudentSongs ? (
         <ViewSongContainer>
           <h2>{student.name}'s Songs</h2>
@@ -70,7 +70,6 @@ function StudentCard({
 
       {editing ? (
         <>
-          {/* <StyledButton onClick={handleCancelEdit}>Cancel</StyledButton> */}
           <StudentEdit
             student={student}
             handleUpdateStudent={handleUpdateStudent}
@@ -86,7 +85,7 @@ function StudentCard({
 
       <StyledButton onClick={handleDelete}>Delete</StyledButton>
 
-      </Try>
+      </Centered>
     </StudentCardsContainer>
   );
 }
@@ -146,7 +145,7 @@ const StyledSongCards = styled.div`
   grid-areas: thing;
 `;
 
-const Try = styled.div`
+const Centered = styled.div`
   display: inline;
   h4 {
     width: 65vw;

@@ -3,19 +3,7 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 function StudentSignUp({
-  user,
-  setUser,
   setSignup,
-  userFullName,
-  setUserFullName,
-  userEmail,
-  setUserEmail,
-  username,
-  setUsername,
-  password,
-  setPassword,
-  passwordConfirmation,
-  setPasswordConfirmation,
   setStudents,
   handleCancelAddStudent
 }) {
