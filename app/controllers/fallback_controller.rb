@@ -1,5 +1,6 @@
 class FallbackController < ActionController::Base
     def index
-      render file: 'client/public/index.html'
+        puts `this is fallback controller. #{[params:path]}`
+        render file: 'client/public/index.html'
     end
 end
